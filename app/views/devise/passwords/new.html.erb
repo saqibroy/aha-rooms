@@ -1,0 +1,25 @@
+<div class="login-container">
+        
+            <div class="login-box animated fadeInDown">
+            	<div class="login-title">Aha-Rooms</div>
+                <div class="login-body">
+                    <div class="login-title"><strong>Forgot</strong> your password?</div>
+                    <%= simple_form_for(resource, as: resource_name,html: {class: 'form-horizontal' }, url: password_path(resource_name)) do |f| %>
+                        <div class="col-md-12 form-group">
+                            <%= f.input :email,label: false, required: true,input_html: {class: "form-control"},wrapper: false, placeholder: "Email"%>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <%= f.button :submit, "Send me reset password instructions", class: "btn btn-info btn-block" %>
+                        </div>
+                        
+                        
+                    <% end %>
+                
+                   
+                    <div class="login-subtitle">
+
+                        Don't have an account yet? <%= link_to "create new account", new_registration_path(resource_name) %>
+                    </div>
+                </div>
+            </div>
+ </div>

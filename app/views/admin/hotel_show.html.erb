@@ -1,0 +1,142 @@
+ <!-- START PAGE CONTAINER -->
+        <div class="page-container">
+            
+            <!-- START PAGE SIDEBAR -->
+            <%= render 'layouts/navbar' %>
+            <!-- PAGE CONTENT -->
+            <div class="page-content">
+                
+                <!-- START X-NAVIGATION VERTICAL -->
+                <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
+                    <!-- TOGGLE NAVIGATION -->
+                    <li class="xn-icon-button">
+                        <a href="#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
+                    </li>
+                    <!-- END TOGGLE NAVIGATION -->
+                    <!-- SEARCH -->
+                      
+                    <!-- END SEARCH -->
+                    <!-- SIGN OUT -->
+                    <li class="xn-icon-button pull-right">
+                        <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>
+                                                
+                    </li> 
+                    <!-- END SIGN OUT -->
+                    <!-- MESSAGES -->
+                   
+                    <!-- END MESSAGES -->
+                    <!-- TASKS -->
+                    
+                    <!-- END TASKS -->
+                </ul>
+                <!-- END X-NAVIGATION VERTICAL -->                     
+
+                <!-- START BREADCRUMB -->
+                <ul class="breadcrumb">
+                    <li><%= link_to "Home", admin_path %></li>                    
+                    <li class="active">Hotels</li>
+                </ul>
+                <!-- END BREADCRUMB -->  
+                <div class="page-title">                    
+                    <h2><span class="fa fa-arrow-circle-o-left"></span> <%= @hotel.name %></h2>
+                </div>
+                <div class="page-content-wrap">
+                 <div class="row">
+                        <div class="col-md-9">
+                            
+                            <div class="panel panel-default">
+                                <div class="panel-body posts">
+                                            
+                                    <div class="post-item">
+                                        
+                                        <div class="post-date"><span class="fa fa-calendar"></span> <%= @hotel.created_at.strftime("%A, %B %d") %>  / by <%= @hotel.user.name %></div>
+                                        <div class="post-text">                                            
+                                            <%= image_tag @hotel.image.url(:medium), class: "img-text post-image" %>
+                                           
+                                            <%= @hotel.description %>
+                                           
+                                        </div>
+                                        
+                                    </div>                                            
+                                       
+                                    
+                                                                       
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-3">
+
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <h3>Hotel Detail</h3>
+                                    
+                                        <i class="fa fa-phone"><%= @hotel.phone %></i>
+                                        <i class="fa fa-location-arrow"><%= @hotel.address %>,<%= @hotel.city %>,<%= @hotel.state %></i>
+                                        
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <h3>Available Rooms</h3>
+                                    <div class="links small">
+                                        <a href="#">Vestibulum porttitor neque vitae odio vulputate molestie</a>
+                                        <a href="#">Etiam tellus mi, interdum id nulla in</a>
+                                        <a href="#">Cras eu tincidunt quam</a>
+                                        <a href="#">Donec rhoncus quam tortor, id pulvinar erat elementum eu</a>
+                                        <a href="#">Nunc lorem est, suscipit bibendum</a>
+                                        <a href="#">Fusce sollicitudin quis turpis eget mollis</a>
+                                        <a href="#">Cras eget sagittis dui, et mollis tortor</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <h3>Tags</h3>
+                                    <ul class="list-tags push-up-10">
+                                        <li><a href="#"><span class="fa fa-tag"></span> Donec</a></li>
+                                        <li><a href="#"><span class="fa fa-tag"></span> Bibendum</a></li>
+                                        <li><a href="#"><span class="fa fa-tag"></span> Praesent</a></li>
+                                        <li><a href="#"><span class="fa fa-tag"></span> Fusce</a></li>
+                                        <li><a href="#"><span class="fa fa-tag"></span> Nam quis</a></li>
+                                        <li><a href="#"><span class="fa fa-tag"></span> Maecenas</a></li>
+                                        <li><a href="#"><span class="fa fa-tag"></span> Nulla facilisi</a></li>
+                                        <li><a href="#"><span class="fa fa-tag"></span> Donec</a></li>
+                                        <li><a href="#"><span class="fa fa-tag"></span> Nam vitae</a></li>
+                                        <li><a href="#"><span class="fa fa-tag"></span> Malesuada</a></li>
+                                    </ul>
+                                </div>
+                            </div>                            
+                            
+                        </div>
+                    </div>
+                 </div>
+                </div>                   
+             </div>
+             </div>
+
+                   
+                   
+               
+
+        <!-- MESSAGE BOX-->
+        <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+            <div class="mb-container">
+                <div class="mb-middle">
+                    <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>
+                    <div class="mb-content">
+                        <p>Are you sure you want to log out?</p>                    
+                        <p>Press No if you want to continue work. Press Yes to logout current user.</p>
+                    </div>
+                    <div class="mb-footer">
+                        <div class="pull-right">
+                            <%=link_to "Yes", destroy_user_session_path, method: :delete, class: "btn btn-success btn-lg" %>
+                            <button class="btn btn-default btn-lg mb-control-close">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

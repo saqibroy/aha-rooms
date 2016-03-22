@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  room_no: 1
+  rate: 1
+  discount: 1
+  available: false
+  description: MyText
+  total_beds: 1
+  total_people: 1
+  meal: 1
+
+two:
+  room_no: 1
+  rate: 1
+  discount: 1
+  available: false
+  description: MyText
+  total_beds: 1
+  total_people: 1
+  meal: 1

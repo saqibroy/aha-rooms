@@ -1,0 +1,128 @@
+ <!-- START PAGE CONTAINER -->
+        <div class="page-container">
+            
+            <!-- START PAGE SIDEBAR -->
+            <%= render 'layouts/navbar' %>
+            <!-- PAGE CONTENT -->
+            <div class="page-content">
+                
+                <!-- START X-NAVIGATION VERTICAL -->
+                <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
+                    <!-- TOGGLE NAVIGATION -->
+                    <li class="xn-icon-button">
+                        <a href="#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
+                    </li>
+                    <!-- END TOGGLE NAVIGATION -->
+                    <!-- SEARCH -->
+                      
+                    <!-- END SEARCH -->
+                    <!-- SIGN OUT -->
+                    <li class="xn-icon-button pull-right">
+                        <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>
+                                                
+                    </li> 
+                    <!-- END SIGN OUT -->
+                    <!-- MESSAGES -->
+                   
+                    <!-- END MESSAGES -->
+                    <!-- TASKS -->
+                    
+                    <!-- END TASKS -->
+                </ul>
+                <!-- END X-NAVIGATION VERTICAL -->                     
+
+                <!-- START BREADCRUMB -->
+                <ul class="breadcrumb">
+                    <li><%= link_to "Home", admin_path %></li>                    
+                    <li><%= link_to "Hotels", admin_hotels_path %></li>
+                    <li class="active">Rooms</li>
+                </ul>
+                <!-- END BREADCRUMB -->  
+                <div class="page-content-wrap">
+                 <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                        <div class="panel-heading">
+                                    <h3 class="panel-title">ROOMS</h3>
+                                    <div class="btn-group pull-right">
+                                    <%= link_to "Add Room",new_room_path(id: @hotel.id), class: "btn btn-primary" %>
+                                    
+                                   
+                                   
+                                        
+                                    </div>  
+                                                                    
+                                    
+                                </div>
+                                <div class="panel-body">
+                                    <table id="customers2" class="table datatable">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>ROOM NO</th>
+                                                <th>DESCRIPTION</th>
+                                                <th>NUM OF BEDS</th>
+                                                <th>NUM OF PEOPLE</th>
+                                                <th>MEAL</th>
+                                                <th>DISCOUNT</th>
+                                                <th>RATE</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <% @rooms.each do |room| %>
+                                            <tr>
+                                                <td><%= room.id %></td>
+                                                <td><%= room.room_no %></td>
+                                                <td><%= room.description %></td>
+                                                <td><%= room.total_beds %></td>
+                                                <td><%= room.total_people %></td>
+                                                <td><%= room.meal %></td>
+                                                <td><%= room.discount %></td>
+                                                <td> <%= link_to edit_room_path(room), class: "btn btn-default btn-rounded btn-sm" do %>
+                            <span class="fa fa-pencil"></span>
+                            <% end %>
+                            <%= link_to room, method: :delete,data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-rounded btn-sm" do %>
+                            <span class="fa fa-times"></span>
+                            <% end %>
+                            <%= link_to admin_hotel_show_path(id: room.id), class: "btn btn-default btn-rounded btn-sm" do %>
+                            <span class="fa fa-eye"></span>
+                            <% end %>
+                            <%= link_to "Add Features",admin_rooms_path(id: room.id), class: "btn btn-primary" %>
+                            </td>
+                            
+                                            </tr>
+                                            <% end %>
+                                            
+                                </tbody>
+                                    </table>                                    
+                                    
+                                </div>
+                        </div>
+                    </div>
+                 </div>
+                </div>                   
+             </div>
+             </div>
+
+                   
+                   
+               
+
+        <!-- MESSAGE BOX-->
+        <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+            <div class="mb-container">
+                <div class="mb-middle">
+                    <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>
+                    <div class="mb-content">
+                        <p>Are you sure you want to log out?</p>                    
+                        <p>Press No if you want to continue work. Press Yes to logout current user.</p>
+                    </div>
+                    <div class="mb-footer">
+                        <div class="pull-right">
+                            <%=link_to "Yes", destroy_user_session_path, method: :delete, class: "btn btn-success btn-lg" %>
+                            <button class="btn btn-default btn-lg mb-control-close">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

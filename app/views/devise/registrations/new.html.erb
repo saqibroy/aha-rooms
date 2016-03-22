@@ -1,0 +1,50 @@
+<div class="login-container">
+        
+            <div class="login-box animated fadeInDown">
+                <div class="login-title">Aha-Rooms</div>
+                <div class="login-body">
+                    <div class="login-title"><strong>Sign Up</strong></div>
+                    <%= simple_form_for(resource, as: resource_name,html: {class: 'form-horizontal' }, url: registration_path(resource_name)) do |f| %>
+                    <%= f.error_notification %>
+                    <div class="col-md-12 form-group">
+                            <%= f.input :name,label: false, required: true,input_html: {class: "form-control"},wrapper: false, placeholder: "Name"%>
+                     </div>
+                      <div class="col-md-12 form-group">
+                            <%= f.input :email,label: false, required: true,input_html: {class: "form-control"},wrapper: false, placeholder: "Email"%>
+                     </div>
+                     <div class="col-md-12 form-group" id="option">
+                            <%= f.select(:user_type, ['Admin','User'], {}, { :class => 'form-control option' }) %>
+                                            
+                                      
+                     </div>
+                     
+                     
+                    <div class="col-md-12 form-group">
+                            <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),input_html: {class: "form-control"},wrapper: false, placeholder: "Password",label: false%>
+                     </div>
+                     <div class="col-md-12 form-group">
+                            <%= f.input :password_confirmation, required: true,input_html: {class: "form-control"},wrapper: false, placeholder: "Confirm Password",label: false%>
+                     </div>
+                     
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <div class="btn btn-primary btn-file btn-block">
+                            <i class="glyphicon glyphicon-folder-open"></i>
+                             Upload Your Profile Picture
+                             <%= f.input :image, required: true, as: :file,input_html: {class: "file"},wrapper: false,label: false %>
+                            
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                       
+                        <div class="col-md-12">
+                            <%= f.button :submit, "Sign Up", class: "btn btn-info btn-block" %>
+                        </div>
+                    </div>
+                 <% end %>
+                </div>
+            </div>
+            
+        </div>

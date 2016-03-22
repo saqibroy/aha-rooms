@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AhaRooms</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<% flash.each do |name,msg|%>
+				<%= content_tag :div, msg, class: "alert alert-danger flash-popup", role: "alert" %>
+				<% end %>
+
+
+<%= yield %>
+<%= javascript_include_tag 'application' %>
+</body>
+</html>

@@ -19,6 +19,7 @@
 //= require js/plugins/datatables/jquery.dataTables.min
 //= require js/plugins
 //= require js/actions
+//= require cocoon
 
 
 

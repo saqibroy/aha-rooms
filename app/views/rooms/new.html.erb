@@ -123,12 +123,34 @@
                                         </div>   
                                         </div>
                                     </div>
+                                    <input type="hidden" name="id" value="<%= @hotel.id%>">
                                     
-                                    
+                                    <div class="row">
+                                    <div class="col-md-4 col-md-offset-2">
+                                        <h3>Features</h3>
+                                        <%= f.simple_fields_for :features do |fe| %>
+                                        <%= render 'feature_fields', f: fe %>
+                                        <% end %>
+                                        <div class="links">
+                                            <%= link_to_add_association 'add feature', f, :features, class: "btn btn-default add-button" %>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="col-md-4 col-md-offset-2">
+                                        <h3>Images</h3>
+                                        <%= f.simple_fields_for :room_images do |im| %>
+                                        <%= render 'room_image_fields', f: im %>
+                                        <% end %>
+                                        <div class="links">
+                                            <%= link_to_add_association 'add Image', f, :room_images, class: "btn btn-default add-button" %>
+                                        </div>
+                                    </div>
                                 </div>
+                                </div>
+                                
                                 <div class="panel-footer">
                                     <button class="btn btn-default">Clear Form</button>
-                                    <%= f.button  :submit , name: "id",value: @hotel.id,class:"btn btn-primary pull-right"%>                                    
+                                    <%= f.button  :submit ,class:"btn btn-primary pull-right"%>                                    
                                     
                                 </div>
                             </div>

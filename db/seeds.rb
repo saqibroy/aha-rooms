@@ -5,3 +5,4 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+features= MainFeature.create([{ name: "free internet" }, { name: "swiming pool" },{ name: "TV" }])

@@ -34,11 +34,11 @@
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><%= link_to "Home", admin_path %></li>                    
-                    <li class="active">Hotels</li>
+                    <li class="active">Rooms</li>
                 </ul>
                 <!-- END BREADCRUMB -->  
                 <div class="page-title">                    
-                    <h2><span class="fa fa-arrow-circle-o-left"></span> <%= @hotel.name %></h2>
+                    <h2><span class="fa fa-arrow-circle-o-left"></span>Room No <%= @room.room_no %></h2>
                 </div>
                 <div class="page-content-wrap">
                  <div class="row">
@@ -49,13 +49,15 @@
                                             
                                     <div class="post-item">
                                         
-                                        <div class="post-date"><span class="fa fa-calendar"></span> <%= @hotel.created_at.strftime("%A, %B %d") %>  / by <%= @hotel.user.name %></div>
+                                        <div class="post-date"><span class="fa fa-calendar"></span> <%= @room.created_at.strftime("%A, %B %d") %>  / by <%= @room.hotel.user.name %></div>
+                                        <% @room.room_images.each do |im| %>
                                         <div class="post-text">                                            
-                                            <%= image_tag @hotel.image.url(:medium), class: "img-text post-image" %>
-                                           
-                                            <%= @hotel.description %>
+                                            <%= image_tag im.image.url(:medium), class: "img-text post-image" %>
+                                           <%= link_to "Remove", admin_image_delete_path(id: im.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-rounded btn-sm" %>
+                                           <br><br>
                                            
                                         </div>
+                                        <% end %>
                                         
                                     </div>                                            
                                        
@@ -67,12 +69,17 @@
                         </div>
                         <div class="col-md-3">
 
+                            
                             <div class="panel panel-default">
                                 <div class="panel-body">
-                                    <h3>Hotel Detail</h3>
+                                    <h3>Room Detail</h3>
                                     
-                                        <i class="fa fa-phone"><%= @hotel.phone %></i>
-                                        <i class="fa fa-location-arrow"><%= @hotel.address %>,<%= @hotel.city %>,<%= @hotel.state %></i>
+                                        <i >Dicount: <%= @room.discount %>%</i><br>
+                                        <i >Total Beds: <%= @room.total_beds %></i><br>
+                                        <i >People Limit: Maximum <%= @room.total_people %></i><br>
+                                        <i >Meal: <%= @room.meal %> Times</i><br>
+                                        <i >Rate: <%= @room.rate %> Per Night</i>
+                                        
                                         
                                     
                                 </div>
@@ -81,11 +88,11 @@
                             
                             <div class="panel panel-default">
                                 <div class="panel-body">
-                                    <h3>Available Rooms</h3>
+                                    <h3>Features</h3>
                                     <ul class="list-tags push-up-10">
-                                    <% @ar.each do |room| %>
-                                        <li><a href="admin_room_show_path(id: room.id)"><span class="fa fa-tag"></span>Room no <%= room.room_no %></a></li>
-                                    <% end %>
+                                    <% @room.features.each do |fe| %>
+                                        <li><a><span class="fa fa-tag"></span> <%= fe.name %></a></li>
+                                        <% end %>
                                     </ul>
                                 </div>
                             </div>                            

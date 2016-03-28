@@ -2,11 +2,15 @@ Rails.application.routes.draw do
   resources :rooms
   get 'home/index'
 
-  devise_for :users, :controllers => { :registrations => 'registrations' }
+  devise_for :users, :controllers => { :registrations => 'registrations', :sessions => "sessions" }
   get "/admin" => "admin#index", :as => 'admin'
   get 'admin/hotels'
   get 'admin/hotel_show'
   get 'admin/rooms'
+  get 'admin/room_show'
+  delete 'admin/image_delete'
+  get 'admin/user_request'
+  get 'admin/user_request_done'
 
   resources :hotels
   # The priority is based upon order of creation: first created -> highest priority.

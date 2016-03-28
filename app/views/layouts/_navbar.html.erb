@@ -43,6 +43,16 @@
                      <span class="xn-text">Hotels & Rooms</span>
                      <% end %>
                     </li> 
+                    <% if current_user.present? %>
+                    <% if current_user.user_type == "superAdmin" %>
+                    <li>
+                        <%= link_to admin_user_request_path do %>
+                     <span class="fa fa-user"></span>
+                     <span class="xn-text">User Requests</span>
+                     <% end %>
+                    </li> 
+                    <% end %>
+                    <% end %>
                     
                 </ul>
                 <!-- END X-NAVIGATION -->

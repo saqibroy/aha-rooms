@@ -34,59 +34,49 @@
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><%= link_to "Home", admin_path %></li>                    
-                    <li class="active">Dashboard</li>
+                    <li class="active">Hotels</li>
                 </ul>
                 <!-- END BREADCRUMB -->  
                 <div class="page-content-wrap">
                  <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-default">
-                        <div class="row">
-                        
-                        <div class="col-md-4">
-                            
-                            <!-- START WIDGET MESSAGES -->
-                            <div class="widget widget-default widget-item-icon" onclick="location.href='<%= admin_hotels_path%>';">
-                                <div class="widget-item-left">
-                                    <span class="fa fa-university"></span>
-                                </div>                             
-                                <div class="widget-data">
-                                    <div class="widget-int num-count"><%= @hotel_count %></div>
-                                    <div class="widget-title">Hotels</div>
-                                </div>      
-                                <div class="widget-controls">                                
-                                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>
+                        <div class="panel-heading">
+                                    <h3 class="panel-title">Requests</h3>
+                                                                    
+                                    
                                 </div>
-                            </div>                            
-                            <!-- END WIDGET MESSAGES -->
-                            
-                        </div>
-                        <% if current_user.present? %>
-                        <% if current_user.user_type == "superAdmin" %>
-                        <div class="col-md-4">
-                            
-                            <!-- START WIDGET MESSAGES -->
-                            <div class="widget widget-default widget-item-icon" onclick="location.href='<%= admin_hotels_path%>';">
-                                <div class="widget-item-left">
-                                    <span class="fa fa-user"></span>
-                                </div>                             
-                                <div class="widget-data">
-                                    <div class="widget-int num-count"><%= @rc %></div>
-                                    <div class="widget-title">User Requests</div>
-                                </div>      
-                                <div class="widget-controls">                                
-                                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>
+                                <div class="panel-body">
+                                    <table id="customers2" class="table datatable">
+                                        <thead>
+                                            <tr>
+                                                
+                                                <th>EMAIL</th>
+                                                <th>TYPE</th>
+                                                <th>ACTION</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <% @users.each do |user| %>
+                                            <tr>
+                                                
+                                                <td><%= user.email %></td>
+                                                <td><%= user.user_type %></td>
+                            <td> <%= link_to admin_user_request_done_path(id: user.id), class: "btn btn-default btn-rounded btn-sm" do %>
+                            <span class="fa fa-check"></span>
+                            <% end %>
+                            <%= link_to '#', method: :delete,data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-rounded btn-sm" do %>
+                            <span class="fa fa-times"></span>
+                            <% end %>
+                            </td>
+                                            </tr>
+                                            <% end %>
+                                            
+                                </tbody>
+                                    </table>                                    
+                                    
                                 </div>
-                            </div>                            
-                            <!-- END WIDGET MESSAGES -->
-                            
                         </div>
-                        <% end %>
-                        <% end %>
-                        
-                            
-                        </div>
-                       </div>
                     </div>
                  </div>
                 </div>                   

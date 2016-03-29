@@ -4,6 +4,16 @@
                 <div class="login-title">Aha-Rooms</div>
                 <div class="login-body">
                     <div class="login-title"><strong>Sign Up</strong></div>
+                    <% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>">
+    <a href="#" data-dismiss="alert" class="close">×</a>
+    <ul>
+      <li>
+        <%= value %>
+      </li>
+    </ul>
+  </div>
+<% end %>
                     <%= simple_form_for(resource, as: resource_name,html: {class: 'form-horizontal' }, url: registration_path(resource_name)) do |f| %>
                     <%= f.error_notification %>
                     <div class="col-md-12 form-group">

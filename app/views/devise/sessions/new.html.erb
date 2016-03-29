@@ -4,7 +4,18 @@
             	<div class="login-title">Aha-Rooms</div>
                 <div class="login-body">
                     <div class="login-title"><strong>Log In</strong> to your account</div>
+                    <% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>">
+    <a href="#" data-dismiss="alert" class="close">×</a>
+    <ul>
+      <li>
+        <%= value %>
+      </li>
+    </ul>
+  </div>
+<% end %>
                     <%= simple_form_for(resource, as: resource_name,html: {class: 'form-horizontal' }, url: session_path(resource_name)) do |f| %>
+                    <%= f.error_notification %>
                         <div class="col-md-12 form-group">
                             <%= f.input :email,label: false, required: true,input_html: {class: "form-control"},wrapper: false, placeholder: "Email"%>
                         </div>
@@ -15,12 +26,14 @@
                         <div class="col-md-6">
                             <%= link_to "Forgot your password?", new_password_path(resource_name), class: "btn btn-info btn-block" %>
                         </div>
+                        <%= devise_error_messages! %>
                         <div class="col-md-5">
                             <%= f.button :submit, "Log in", class: "btn btn-info btn-block"  %>
                         </div>
                         </div>
                     <% end %>
-                
+
+                    
                    
                     <div class="login-subtitle">
 

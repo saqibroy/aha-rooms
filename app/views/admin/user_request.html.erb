@@ -1,3 +1,6 @@
+ <% flash.each do |name,msg|%>
+                <%= content_tag :div, msg, class: "alert alert-danger flash-popup", role: "alert" %>
+                <% end %>
  <!-- START PAGE CONTAINER -->
         <div class="page-container">
             
@@ -65,7 +68,7 @@
                             <td> <%= link_to admin_user_request_done_path(id: user.id), class: "btn btn-default btn-rounded btn-sm" do %>
                             <span class="fa fa-check"></span>
                             <% end %>
-                            <%= link_to '#', method: :delete,data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-rounded btn-sm" do %>
+                            <%= link_to admin_user_destroy_path(id: user.id), method: :delete,data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-rounded btn-sm" do %>
                             <span class="fa fa-times"></span>
                             <% end %>
                             </td>

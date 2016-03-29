@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   delete 'admin/image_delete'
   get 'admin/user_request'
   get 'admin/user_request_done'
+  get 'admin/user_destroy'
 
   resources :hotels
   # The priority is based upon order of creation: first created -> highest priority.

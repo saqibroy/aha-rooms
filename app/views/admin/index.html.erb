@@ -1,3 +1,6 @@
+ <% flash.each do |name,msg|%>
+                <%= content_tag :div, msg, class: "alert alert-danger flash-popup", role: "alert" %>
+                <% end %>
  <!-- START PAGE CONTAINER -->
         <div class="page-container">
             
@@ -66,7 +69,7 @@
                         <div class="col-md-4">
                             
                             <!-- START WIDGET MESSAGES -->
-                            <div class="widget widget-default widget-item-icon" onclick="location.href='<%= admin_hotels_path%>';">
+                            <div class="widget widget-default widget-item-icon" onclick="location.href='<%= admin_user_request_path%>';">
                                 <div class="widget-item-left">
                                     <span class="fa fa-user"></span>
                                 </div>                             

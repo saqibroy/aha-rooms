@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20160324103622) do
     t.integer  "room_no"
     t.integer  "rate"
     t.integer  "discount"
-    t.boolean  "available"
+    t.boolean  "available",default: true
     t.text     "description"
     t.integer  "total_beds"
     t.integer  "total_people"

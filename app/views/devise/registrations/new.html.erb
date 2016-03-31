@@ -23,7 +23,7 @@
                             <%= f.input :email,label: false, required: true,input_html: {class: "form-control"},wrapper: false, placeholder: "Email"%>
                      </div>
                      <div class="col-md-12 form-group" id="option">
-                            <%= f.select(:user_type, ['Admin'], {}, { :class => 'form-control option',:type => "hidden" }) %>
+                            <%= f.select(:user_type, ['Admin','User'], {}, { :class => 'form-control option',:type => "hidden" }) %>
                                             
                                       
                      </div>
@@ -34,6 +34,9 @@
                      </div>
                      <div class="col-md-12 form-group">
                             <%= f.input :password_confirmation, required: true,input_html: {class: "form-control"},wrapper: false, placeholder: "Confirm Password",label: false%>
+                     </div>
+                     <div class="col-md-12 form-group">
+                            <%= f.input :coupon, required: false,input_html: {class: "form-control"},wrapper: false, placeholder: "Coupon(Optional)",label: false%>
                      </div>
                      
                     <div class="form-group">

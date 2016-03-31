@@ -1,6 +1,7 @@
 class HotelsController < ApplicationController
   before_action :set_hotel, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show,:index] 
+  before_action :check_user, except: [:show,:index]
 
   # GET /hotels
   # GET /hotels.json
@@ -71,5 +72,10 @@ class HotelsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def hotel_params
       params.require(:hotel).permit(:name, :address, :phone, :city, :state, :image, :description)
+    end
+    def check_user
+      if current_user.user_type == "User"
+        redirect_to root_path, notice: "Access Denied!"
+      end
     end
 end

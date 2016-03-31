@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  no_of_rooms: 1
+  total_price: 9.99
+  check_in_date: 2016-03-31 13:40:39
+  check_out_date: 2016-03-31 13:40:39
+  room_id: 1
+  user_id: 1
+
+two:
+  no_of_rooms: 1
+  total_price: 9.99
+  check_in_date: 2016-03-31 13:40:39
+  check_out_date: 2016-03-31 13:40:39
+  room_id: 1
+  user_id: 1

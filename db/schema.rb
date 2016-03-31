@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160324103622) do
+ActiveRecord::Schema.define(version: 20160331084039) do
 
   create_table "features", force: :cascade do |t|
     t.string   "name"
@@ -42,6 +42,18 @@ ActiveRecord::Schema.define(version: 20160324103622) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "reservations", force: :cascade do |t|
+    t.integer  "no_of_rooms"
+    t.decimal  "total_price",    precision: 4, scale: 3
+    t.decimal  "float_value",    precision: 4, scale: 3
+    t.datetime "check_in_date"
+    t.datetime "check_out_date"
+    t.integer  "room_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
   create_table "room_images", force: :cascade do |t|
     t.integer  "room_id"
     t.datetime "created_at",         null: false
@@ -56,7 +68,7 @@ ActiveRecord::Schema.define(version: 20160324103622) do
     t.integer  "room_no"
     t.integer  "rate"
     t.integer  "discount"
-    t.boolean  "available",default: true
+    t.boolean  "available"
     t.text     "description"
     t.integer  "total_beds"
     t.integer  "total_people"
@@ -86,6 +98,7 @@ ActiveRecord::Schema.define(version: 20160324103622) do
     t.datetime "image_updated_at"
     t.string   "name"
     t.string   "user_type"
+    t.string   "coupon"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

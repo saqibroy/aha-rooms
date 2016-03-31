@@ -16,7 +16,7 @@
                             <div class="profile-data">
                                 <div class="profile-data-name"><%= current_user.name %></div>
                                 
-                                <div class="profile-data-title">Admin</div>
+                                <div class="profile-data-title"><%= current_user.user_type %></div>
                                 
                             </div>
                             <div class="profile-controls">
@@ -37,18 +37,42 @@
                      <span class="xn-text">Dashboard</span>
                      <% end %>               
                     </li> 
+                    <% if current_user.present? %>
+                    <% if current_user.user_type != "User" %>
                     <li>
                         <%= link_to admin_hotels_path do %>
                      <span class="fa fa-university"></span>
                      <span class="xn-text">Hotels & Rooms</span>
                      <% end %>
                     </li> 
+                    <% end %>
+                    <% end %>
+                    <% if current_user.present? %>
+                    <% if current_user.user_type != "User" %>
+                    <li>
+                        <%= link_to admin_user_data_path do %>
+                     <span class="fa fa-users"></span>
+                     <span class="xn-text">Users</span>
+                     <% end %>
+                    </li> 
+                    <% end %>
+                    <% end %>
                     <% if current_user.present? %>
                     <% if current_user.user_type == "superAdmin" %>
                     <li>
                         <%= link_to admin_user_request_path do %>
                      <span class="fa fa-user"></span>
-                     <span class="xn-text">User Requests</span>
+                     <span class="xn-text">Admin Requests</span>
+                     <% end %>
+                    </li> 
+                    <% end %>
+                    <% end %>
+                    <% if current_user.present? %>
+                    <% if current_user.user_type == "User" %>
+                    <li>
+                        <%= link_to reservations_path do %>
+                     <span class="fa fa-user"></span>
+                     <span class="xn-text">Reservations</span>
                      <% end %>
                     </li> 
                     <% end %>

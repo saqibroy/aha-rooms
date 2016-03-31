@@ -1,3 +1,6 @@
+ <% flash.each do |name,msg|%>
+                <%= content_tag :div, msg, class: "alert alert-danger flash-popup", role: "alert" %>
+                <% end %>
  <!-- START PAGE CONTAINER -->
         <div class="page-container">
             
@@ -34,7 +37,7 @@
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><%= link_to "Home", admin_path %></li>                    
-                    <li class="active">Hotels</li>
+                    <li class="active">Users</li>
                 </ul>
                 <!-- END BREADCRUMB -->  
                 <div class="page-content-wrap">
@@ -42,47 +45,42 @@
                         <div class="col-md-12">
                             
                             
-                            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+                            <%= simple_form_for(@user,:url => admin_user_create_path, :method => :post) do |f| %>
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title"><strong>UPDATE USER PROFILE</strong></h3>
+                                    <h3 class="panel-title"><strong>EDIT USER</strong></h3>
                                     <ul class="panel-controls">
                                         <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
                                     </ul>
                                 </div>
                                
-                                <div class="panel-body">
-                                <div class="form-group col-md-offset-2">
+                                <div class="panel-body"> 
+                                     <div class="form-group col-md-offset-2">
                                         <label class="col-md-1 col-xs-12 control-label ">NAME</label>
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <%= f.input :name,label: false, required: false,input_html: {class: "form-control"},wrapper: false%>
-                                            </div>                                            
-                                        </div>
-                                    </div>
-                                    
-                                    <br><br> 
-                                     <div class="form-group col-md-offset-2">
-                                        <label class="col-md-1 col-xs-12 control-label ">EMAIL</label>
-                                        <div class="col-md-6 col-xs-12">                                            
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <%= f.input :email,label: false, required: false,input_html: {class: "form-control"},wrapper: false%>
-                                                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
+                                                <%= f.input :name,label: false, required: true,input_html: {class: "form-control"},wrapper: false%>
                                             </div>                                            
                                         </div>
                                     </div>
                                     <br><br>
                                      <div class="form-group col-md-offset-2">
+                                        <label class="col-md-1 col-xs-12 control-label ">EMAIL</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <%= f.input :email,label: false, required: true,input_html: {class: "form-control"},wrapper: false%>
+                                            </div>                                            
+                                        </div>
+                                    </div>
+                                    <br><br>
+                                    <div class="form-group col-md-offset-2">
                                         <label class="col-md-1 col-xs-12 control-label ">PASSWORD</label>
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <%= f.input :password, autocomplete: "off", required: false,label: false,input_html: {class: "form-control"},wrapper: false%>
+                                                <%= f.input :password,label: false, required: true,input_html: {class: "form-control"},wrapper: false,hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)%>
                                             </div>                                            
                                         </div>
                                     </div>
@@ -92,33 +90,26 @@
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <%= f.input :password_confirmation, required: false,label: false,input_html: {class: "form-control"},wrapper: false,hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)%>
+                                                <%= f.input :password_confirmation,label: false, required: true,input_html: {class: "form-control"},wrapper: false%>
                                             </div>                                            
                                         </div>
                                     </div>
+                                    <% if current_user.present? %>
+                                    <% if current_user.user_type == "superAdmin" %>
                                     <br><br>
                                     <div class="form-group col-md-offset-2">
-                                        <label class="col-md-1 col-xs-12 control-label ">COUPON</label>
+                                        <label class="col-md-1 col-xs-12 control-label ">USER TYPE</label>
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <%= f.input :coupon,label: false, required: false,input_html: {class: "form-control"},wrapper: false%>
+                                                <%= f.select(:user_type, ['Admin','User'], {}, { :class => 'form-control', }) %>
                                             </div>                                            
                                         </div>
                                     </div>
-                                    
-                                    <br><br> 
-                                    <div class="form-group col-md-offset-2">
-                                        <label class="col-md-1 col-xs-12 control-label ">CURRENT PASSWORD</label>
-                                        <div class="col-md-6 col-xs-12">                                            
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <%= f.input :current_password,label: false, required: true,input_html: {class: "form-control"},wrapper: false%>
-                                            </div>                                            
-                                        </div>
-                                    </div>
+                                    <% end %>
+                                    <% end %>
                                     <br><br>
-                                        <div class="form-group col-md-offset-2">
+                                    <div class="form-group col-md-offset-2">
                                         <label class="col-md-1 col-xs-12 control-label ">IMAGE</label>
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
@@ -127,13 +118,25 @@
                                             </div>                                            
                                         </div>
                                     </div>
-                                    
+                                    <% if current_user.present? %>
+                                    <% if current_user.user_type == "superAdmin" %>
+                                    <br><br>
+                                    <div class="form-group col-md-offset-2">
+                                        <label class="col-md-1 col-xs-12 control-label ">STATUS</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="input-group status">
+                                                <%= f.input(:admin, as: :boolean, boolean_style: :inline,label: false, required: true,wrapper: false) %>
+                                           
+                                            </div>                                            
+                                        </div>
+                                    </div>
+                                    <% end %>
+                                    <% end %>
                                     
                                 </div>
                                 <div class="panel-footer">
-                                <%= link_to "Deactivate my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete,class: "btn btn-default" %>
-                                                                      
-                                    <button class="btn btn-primary pull-right">Update</button>
+                                    <button class="btn btn-default">Clear Form</button>                                    
+                                    <button class="btn btn-primary pull-right">Submit</button>
                                 </div>
                             </div>
                             <% end %>
@@ -166,4 +169,3 @@
                 </div>
             </div>
         </div>
-

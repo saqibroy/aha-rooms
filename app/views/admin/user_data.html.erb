@@ -1,4 +1,4 @@
-<% flash.each do |name,msg|%>
+ <% flash.each do |name,msg|%>
                 <%= content_tag :div, msg, class: "alert alert-danger flash-popup", role: "alert" %>
                 <% end %>
  <!-- START PAGE CONTAINER -->
@@ -37,8 +37,7 @@
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><%= link_to "Home", admin_path %></li>                    
-                    <li><%= link_to "Hotels", admin_hotels_path %></li>
-                    <li class="active">Rooms</li>
+                    <li class="active">Users</li>
                 </ul>
                 <!-- END BREADCRUMB -->  
                 <div class="page-content-wrap">
@@ -46,15 +45,14 @@
                     <div class="col-md-12">
                         <div class="panel panel-default">
                         <div class="panel-heading">
-                                    <h3 class="panel-title">ROOMS</h3>
+                                    <h3 class="panel-title">USERS</h3>
                                     <div class="btn-group pull-right">
-                                    <%= link_to "Add Room",new_room_path(id: @hotel.id), class: "btn btn-primary" %>
+                                    <%= link_to "Add User",admin_user_new_path, class: "btn btn-primary" %>
                                     
                                    
                                    
                                         
-                                    </div>  
-                                                                    
+                                    </div>                                    
                                     
                                 </div>
                                 <div class="panel-body">
@@ -62,37 +60,26 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>ROOM NO</th>
-                                                <th>DESCRIPTION</th>
-                                                <th>NUM OF BEDS</th>
-                                                <th>NUM OF PEOPLE</th>
-                                                <th>MEAL</th>
-                                                <th>DISCOUNT</th>
-                                                <th>RATE</th>
+                                                <th>NAME</th>
+                                                <th>EMAIL</th>
+                                                <th>TYPE</th>
+                                                <th>ACTION</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <% @rooms.each do |room| %>
+                                        <% @users.each do |user| %>
                                             <tr>
-                                                <td><%= room.id %></td>
-                                                <td><%= room.room_no %></td>
-                                                <td><%= room.description %></td>
-                                                <td><%= room.total_beds %></td>
-                                                <td><%= room.total_people %></td>
-                                                <td><%= room.meal %></td>
-                                                <td><%= room.discount %></td>
-                                                <td> <%= link_to edit_room_path(room), class: "btn btn-default btn-rounded btn-sm" do %>
+                                                <td><%= user.id %></td>
+                                                <td><%= user.name %></td>
+                                                <td><%= user.email %></td>
+                                                <td><%= user.user_type %></td>
+                            <td> <%= link_to admin_user_edit_path(id: user.id), class: "btn btn-default btn-rounded btn-sm" do %>
                             <span class="fa fa-pencil"></span>
                             <% end %>
-                            <%= link_to room, method: :delete,data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-rounded btn-sm" do %>
+                            <%= link_to admin_user_destroy_path, method: :delete,data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-rounded btn-sm" do %>
                             <span class="fa fa-times"></span>
                             <% end %>
-                            <%= link_to admin_room_show_path(id: room.id), class: "btn btn-default btn-rounded btn-sm" do %>
-                            <span class="fa fa-eye"></span>
-                            <% end %>
-                            <%= link_to "Reserve Room",new_reservation_path(id: room.id), class: "btn btn-primary" %>
                             </td>
-                            
                                             </tr>
                                             <% end %>
                                             

@@ -38,7 +38,7 @@
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><%= link_to "Home", admin_path %></li>                    
-                    <li class="active">Reservations</li>
+                    <li class="active">Features</li>
                 </ul>
                 <!-- END BREADCRUMB -->  
                 <div class="page-content-wrap">
@@ -46,54 +46,35 @@
                     <div class="col-md-12">
                         <div class="panel panel-default">
                         <div class="panel-heading">
-                                    <h3 class="panel-title">RESERVATIONS</h3>
+                                    <h3 class="panel-title">FEATURES</h3>
+                                    <div class="btn-group pull-right">
+                                    <%= link_to "Add Feature",admin_feature_new_path, class: "btn btn-primary" %>
                                     
+                                   
+                                   
+                                        
+                                    </div>  
                                                                     
                                     
                                 </div>
-                                <%= month_calendar events: @reservations do |date, reservations| %>
-  <%= date %>
-
-
-  <% reservations.each do |reservation| %>
-    <div>
-      <% if date == reservation.check_out_date %>
-    <%= reservation.room.room_no %>
-    <% end %>
-      Room No: <%= reservation.room.room_no %>
-      <%= reservation.check_out_date.strftime("Check Out Date %m/%d/%Y") %>
-    </div>
-  <% end %>
-<% end %>
                                 <div class="panel-body">
-
                                     <table id="customers2" class="table datatable">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Number of rooms</th>
-                                                <th>Check in</th>
-                                                <th>Check out</th>
-                                                <th>Total Price</th>
-                                                <th>Hotel name</th>
-                                                <th>Room no</th>
+                                                <th>NAME</th>
+                                                
                                                 <th>ACTION</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <% @reservations.each do |reservation| %>
+                                        <% @features.each do |feature| %>
                                             <tr>
-                                                <td><%= reservation.id %></td>
-                                                <td><%= reservation.no_of_rooms %></td>
-                                                <td><%= reservation.check_in_date %></td>
-                                                <td><%= reservation.check_out_date %></td>
-                                                <td><%= reservation.total_price %></td>
-                                                <td><%= reservation.room.hotel.name %></td>
-                                                <td><%= reservation.room.room_no %></td>
-                                                <td> <%= link_to edit_reservation_path(reservation), class: "btn btn-default btn-rounded btn-sm" do %>
-                            <span class="fa fa-pencil"></span>
-                            <% end %>
-                            <%= link_to reservation, method: :delete,data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-rounded btn-sm" do %>
+                                                <td><%= feature.id %></td>
+                                                <td><%= feature.name %></td>
+                                                
+                                                <td> 
+                            <%= link_to admin_feature_destroy_path(id: feature.id), method: :delete,data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-rounded btn-sm" do %>
                             <span class="fa fa-times"></span>
                             <% end %>
                             
@@ -135,40 +116,3 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

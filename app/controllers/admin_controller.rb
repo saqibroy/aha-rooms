@@ -1,6 +1,7 @@
 class AdminController < ApplicationController
 	before_action :authenticate_user!
   before_action :set_user, only: [ :user_edit, :user_update, :user_destroy]
+  before_action :set_feature, only: [ :feature_destroy]
   def index
   	if current_user.user_type == "superAdmin"
   		@hotel_count= Hotel.all.count
@@ -110,16 +111,50 @@ class AdminController < ApplicationController
     end
   end
 
+def feature_destroy
+    
+    @feature.destroy
+    respond_to do |format|
+      format.html { redirect_to admin_features_path, notice: 'feature was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+  def features
+    @features= MainFeature.all
+    
+  end
+  def feature_new
+    @feature = MainFeature.new
+  end
+  
+  def feature_create
+    @feature = MainFeature.new(feature_params)
+    
 
+    respond_to do |format|
+      if @feature.save
+        format.html { redirect_to admin_features_path, notice: 'feature was successfully created.' }
+        format.json { render :features, status: :created, location: @feature }
+      else
+        format.html { render :feature_new }
+        format.json { render json: @feature.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   private
   def set_user
       @user = User.find(params[:id])
-end
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:name,:email,:image,:password,:password_confirmation,:user_type,:admin)
     end
-  
+   def set_feature
+      @feature = MainFeature.find(params[:id])
+   end
+   def feature_params
+      params.require(:main_feature).permit(:name)
+    end
 end

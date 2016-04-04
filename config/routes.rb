@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+   
+
   resources :reservations
   resources :rooms
   get 'home/index'
@@ -12,12 +14,16 @@ Rails.application.routes.draw do
   delete 'admin/image_delete'
   get 'admin/user_request'
   get 'admin/user_request_done'
-  get 'admin/user_destroy'
+  delete 'admin/user_destroy'
   get 'admin/user_data'
   get 'admin/user_new'
   post 'admin/user_create'
   get 'admin/user_edit'
   put 'admin/user_update'
+  delete 'admin/feature_destroy'
+  get 'admin/features'
+  get 'admin/feature_new'
+  post 'admin/feature_create'
 
   resources :hotels
   # The priority is based upon order of creation: first created -> highest priority.

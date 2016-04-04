@@ -1,3 +1,6 @@
+ <% flash.each do |name,msg|%>
+                <%= content_tag :div, msg, class: "alert alert-danger flash-popup", role: "alert" %>
+                <% end %>
  <!-- START PAGE CONTAINER -->
         <div class="page-container">
             
@@ -34,7 +37,7 @@
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><%= link_to "Home", admin_path %></li>                    
-                    <li class="active">Reserve Room</li>
+                    <li class="active">Features</li>
                 </ul>
                 <!-- END BREADCRUMB -->  
                 <div class="page-content-wrap">
@@ -42,72 +45,28 @@
                         <div class="col-md-12">
                             
                             
-                            <%= simple_form_for(@reservation) do |f| %>
-  <%= f.error_notification %>
+                            <%= simple_form_for(@feature,:url => admin_feature_create_path, :method => :post) do |f| %>
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title"><strong>Reserve Room</strong></h3>
+                                    <h3 class="panel-title"><strong>ADD FEATURE</strong></h3>
                                     <ul class="panel-controls">
                                         <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
                                     </ul>
                                 </div>
                                
                                 <div class="panel-body"> 
-                                <%= month_calendar events: @reservations do |date, reservations| %>
-  <%= date %>
-
-
-  <% reservations.each do |reservation| %>
-    <div>
-      
-      Room No: <%= reservation.room.room_no %><br>
-      <%= reservation.check_out_date.strftime("Check Out Date %m/%d/%Y") %>
-    </div>
-  <% end %>
-<% end %>
                                      <div class="form-group col-md-offset-2">
-                                        <label class="col-md-2 col-xs-12 control-label ">USER EMAIL</label>
+                                        <label class="col-md-1 col-xs-12 control-label ">NAME</label>
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <%= f.collection_select :user_id, User.all.where(user_type: "User"), :id, :email,{}, {:class => "form-input form-control"} %>
+                                                <%= f.input :name,label: false, required: true,input_html: {class: "form-control"},wrapper: false%>
                                             </div>                                            
                                         </div>
                                     </div>
-                                    <br><br>
-                                     <div class="form-group col-md-offset-2">
-                                        <label class="col-md-2 col-xs-12 control-label">ROOM</label>
-                                        <div class="col-md-6 col-xs-12">
-                                        <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-
-                                            <%= f.input :no_of_rooms,label: false, required: true,input_html: {class: "form-control"},wrapper: false%>
-                                           </div>
-                                        </div>
-                                    </div>
-                                    <br><br>
-                                     <div class="form-group col-md-offset-2">
-                                        <label class="col-md-2 col-xs-12 control-label">CHECK IN</label>
-                                        <div class="col-md-6 col-xs-12"> 
-                                         <div >
-                                                                                         
-                                            <%= f.input :check_in_date,label: false, required: true,wrapper: false%>
-                                           </div>
-                                        </div>
-                                    </div>
-                                     <br><br>
-                                     <div class="form-group col-md-offset-2">
-                                        <label class="col-md-2 col-xs-12 control-label">CHECK OUT</label>
-                                        <div class="col-md-6 col-xs-12">
-                                        <div >
-                                                                                            
-                                            <%= f.input :check_out_date,label: false, required: true,wrapper: false%>
-                                        </div>   
-                                        </div>
-                                    </div>
-                                    <input type="hidden" name="id" value="<%= @room.id%>">
-                                     
                                    
+                                    
+                                    
                                 </div>
                                 <div class="panel-footer">
                                     <button class="btn btn-default">Clear Form</button>                                    
@@ -144,27 +103,3 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

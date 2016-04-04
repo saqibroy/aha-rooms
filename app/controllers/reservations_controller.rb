@@ -6,7 +6,14 @@ class ReservationsController < ApplicationController
   # GET /reservations
   # GET /reservations.json
   def index
-    @reservations = current_user.reservations.all
+    if current_user.user_type == "User"
+      @reservations = current_user.reservations.all
+    elsif current_user.user_type == "Admin"
+      @reservations = current_user.hotels.rooms.reservations.all
+      else
+      @reservations = Reservation.all
+    end
+    
   end
 
   # GET /reservations/1
@@ -17,6 +24,7 @@ class ReservationsController < ApplicationController
   # GET /reservations/new
   def new
     @reservation = @room.reservations.build
+    @reservations= @room.reservations.all
   end
 
   # GET /reservations/1/edit

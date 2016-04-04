@@ -12,8 +12,12 @@
  *
  *= require_tree .
  *= require_self
+ *= require simple_calendar
+
  */
+
 @import "css/theme-default.css";
+
 
 .login-title{
 	text-align: center;

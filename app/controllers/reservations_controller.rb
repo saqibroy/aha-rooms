@@ -40,7 +40,7 @@ class ReservationsController < ApplicationController
   # POST /reservations.json
   def create
     @reservation = @room.reservations.build(reservation_params)
-    @reservation.total_price= (@reservation.room.rate_after_disc * (@reservation.check_out_date.strftime("%d").to_i - @reservation.check_in_date.strftime("%d").to_i)).to_f
+    @reservation.total_price= (@reservation.room.rate_after_disc.to_i * (@reservation.check_out_date.strftime("%d").to_i - @reservation.check_in_date.strftime("%d").to_i)).to_f
 
     respond_to do |format|
       if @reservation.save

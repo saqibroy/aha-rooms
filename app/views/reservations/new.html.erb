@@ -60,7 +60,7 @@
   <% reservations.each do |reservation| %>
     <div>
       
-      Room No: <%= reservation.room.room_no %><br>
+      <%= link_to "Room No: #{ reservation.room.room_no }", reservation %><br>
       <%= reservation.check_out_date.strftime("Check Out Date %m/%d/%Y") %>
     </div>
   <% end %>

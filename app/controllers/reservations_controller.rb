@@ -25,6 +25,11 @@ class ReservationsController < ApplicationController
   def new
     @reservation = @room.reservations.build
     @reservations= @room.reservations.all
+    @dates= []
+    @reservations.each do |r|
+      @dates.push({start: r.check_in_date , end: r.check_out_date})
+    end
+    
   end
 
   # GET /reservations/1/edit
@@ -35,10 +40,11 @@ class ReservationsController < ApplicationController
   # POST /reservations.json
   def create
     @reservation = @room.reservations.build(reservation_params)
+    @reservation.total_price= @reservation.room.rate_after_disc * (@reservation.check_out_date.strftime("%d").to_i - @reservation.check_in_date.strftime("%d").to_i)
 
     respond_to do |format|
       if @reservation.save
-        format.html { redirect_to reservations_path, notice: 'Reservation was successfully created.' }
+        format.html { redirect_to new_reservation_path(id: @reservation.room.id), notice: 'Reservation was successfully created.' }
         format.json { render :show, status: :created, location: @reservation }
       else
         format.html { render :new }
@@ -52,6 +58,8 @@ class ReservationsController < ApplicationController
   def update
     respond_to do |format|
       if @reservation.update(reservation_params)
+        @reservation.total_price= @reservation.room.rate_after_disc * (@reservation.check_out_date.strftime("%d").to_i - @reservation.check_in_date.strftime("%d").to_i)
+        @reservation.save
         format.html { redirect_to @reservation, notice: 'Reservation was successfully updated.' }
         format.json { render :show, status: :ok, location: @reservation }
       else

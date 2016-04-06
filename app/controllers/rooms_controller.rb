@@ -27,6 +27,9 @@ class RoomsController < ApplicationController
   def create
     @hotel= Hotel.find(params[:id])
     @room = @hotel.rooms.build(room_params)
+    disc= 100 - @room.discount.to_f
+    val= (disc/100).to_f
+    @room.rate_after_disc= (val * @room.rate).to_f
     
 
     respond_to do |format|
@@ -45,7 +48,11 @@ class RoomsController < ApplicationController
   def update
     respond_to do |format|
       if @room.update(room_params)
-        format.html { redirect_to admin_rooms_path, notice: 'Room was successfully updated.' }
+        disc= 100 - @room.discount.to_f
+        val= (disc/100).to_f
+        @room.rate_after_disc= (val * @room.rate).to_f
+        @room.save
+        format.html { redirect_to admin_rooms_path(id: @room.hotel.id), notice: 'Room was successfully updated.' }
         format.json { render :show, status: :ok, location: @room }
       else
         format.html { render :edit }

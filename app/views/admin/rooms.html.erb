@@ -69,6 +69,8 @@
                                                 <th>MEAL</th>
                                                 <th>DISCOUNT</th>
                                                 <th>RATE</th>
+                                                <th>RATE AFTER DISC</th>
+                                                <th>ACTIONS</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -81,6 +83,8 @@
                                                 <td><%= room.total_people %></td>
                                                 <td><%= room.meal %></td>
                                                 <td><%= room.discount %></td>
+                                                <td><%= room.rate %></td>
+                                                <td><%= room.rate_after_disc %></td>
                                                 <td> <%= link_to edit_room_path(room), class: "btn btn-default btn-rounded btn-sm" do %>
                             <span class="fa fa-pencil"></span>
                             <% end %>

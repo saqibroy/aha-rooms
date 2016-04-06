@@ -76,13 +76,13 @@
                             <div class="panel panel-default">
                                 <div class="panel-body">
                                     <h3>Room Detail</h3>
-                                    
+                                        <i >Hotel: <%= @room.hotel.name %></i><br>
                                         <i >Dicount: <%= @room.discount %>%</i><br>
                                         <i >Total Beds: <%= @room.total_beds %></i><br>
                                         <i >People Limit: Maximum <%= @room.total_people %></i><br>
                                         <i >Meal: <%= @room.meal %> Times</i><br>
                                         <i >Rate: <%= @room.rate %> Per Night</i><br>
-                                        <i >Rate after Discount: <%= @dis %> Per Night</i>
+                                        <i >Rate after Discount: <%= @room.rate_after_disc %> Per Night</i>
                                         
                                         
                                     

@@ -31,9 +31,7 @@ class AdminController < ApplicationController
   end
   def room_show
     @room= Room.find(params[:id])
-    @disc= 100 - @room.discount
-    @val= @disc/100
-    @dis= @val * @room.rate
+    
   end
   def image_delete
     @im= RoomImage.find(params[:id])

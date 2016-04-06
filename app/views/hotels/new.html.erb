@@ -103,17 +103,7 @@
                                         </div>
                                     </div>
                                     <br><br>
-                                     <div class="form-group col-md-offset-2">
-                                        <label class="col-md-1 col-xs-12 control-label">Description</label>
-                                        <div class="col-md-6 col-xs-12">
-                                        <div class="input-group">
-                                                                                           
-                                            <%= f.input :description, required: true,input_html: {class: "form-control"},wrapper: false,label: false %>
-                                        </div>   
-                                        </div>
-                                    </div>
-                                    <br><br>
-                                     <div class="form-group col-md-offset-2">
+                                    <div class="form-group col-md-offset-2">
                                         <label class="col-md-1 col-xs-12 control-label">IMAGE</label>
                                         <div class="col-md-6 col-xs-12">
                                         <div class="input-group">
@@ -122,6 +112,16 @@
                                         </div>   
                                         </div>
                                     </div>
+                                    <br><br>
+                                     <div class="form-group col-md-offset-2">
+                                        <label class="col-md-1 col-xs-12 control-label">DESC</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <%= f.input :description,label: false, required: true,input_html: {class: "form-control"},wrapper: false%>
+                                           
+                                        </div>
+                                    </div>
+                                    
+                                     
                                 </div>
                                 <div class="panel-footer">
                                     <button class="btn btn-default">Clear Form</button>                                    

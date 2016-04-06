@@ -20,6 +20,7 @@
 //= require js/plugins
 //= require js/actions
 //= require cocoon
+//= require availability-calendar
 
 
 

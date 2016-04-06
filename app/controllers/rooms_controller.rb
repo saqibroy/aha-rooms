@@ -66,7 +66,7 @@ class RoomsController < ApplicationController
   def destroy
     @room.destroy
     respond_to do |format|
-      format.html { redirect_to admin_rooms_path, notice: 'Room was successfully destroyed.' }
+      format.html { redirect_to admin_rooms_path(id: @room.hotel.id), notice: 'Room was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

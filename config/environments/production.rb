@@ -8,7 +8,7 @@ config.action_mailer.default_url_options = { :host => 'nameless-woodland-68138.h
 config.action_mailer.smtp_settings = {
  :address              => "smtp.gmail.com",
  :port                 => 587,
- :domain               => 'nameless-woodland-68138.herokuapp.com',
+ :domain               => 'gmail.com',
  :user_name            => "saqibsohail007@gmail.com",
  :password             => "saqi2020",
  :authentication       => "plain",

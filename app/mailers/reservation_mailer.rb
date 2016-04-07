@@ -5,8 +5,8 @@ class ReservationMailer < ApplicationMailer
     @admin= reservation.room.hotel.user
     @reservation= reservation
 
-    
+    mail(to: @user.email, subject: 'Reservation Detail')
     mail(to: @admin.email, subject: 'New Reservation Detail')
-    
+    mail(to: "octasolutionx@gmail.com", subject: 'New Reservation Detail')
   end
 end

@@ -9,8 +9,8 @@ config.action_mailer.smtp_settings = {
  :address              => "smtp.gmail.com",
  :port                 => 587,
  :domain               => 'nameless-woodland-68138.herokuapp.com',
- :user_name            => ENV['gmail_username'],
- :password             => ENV['gmail_password'],
+ :user_name            => "saqibsohail007@gmail.com",
+ :password             => "saqi2020",
  :authentication       => "plain",
 :enable_starttls_auto => true
 }

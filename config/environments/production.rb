@@ -4,9 +4,11 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.action_mailer.delivery_method = :smtp
 # SMTP settings for gmail
+config.action_mailer.default_url_options = { :host => 'nameless-woodland-68138.herokuapp.com' }
 config.action_mailer.smtp_settings = {
  :address              => "smtp.gmail.com",
  :port                 => 587,
+ :domain               => 'nameless-woodland-68138.herokuapp.com',
  :user_name            => ENV['gmail_username'],
  :password             => ENV['gmail_password'],
  :authentication       => "plain",

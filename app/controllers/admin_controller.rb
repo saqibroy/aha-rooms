@@ -5,7 +5,7 @@ class AdminController < ApplicationController
   def index
   	if current_user.user_type == "superAdmin"
   		@hotel_count= Hotel.all.count
-      @rc= User.all.where(admin: false).count
+      @rc= User.all.where(admin: false,user_type: "Admin").count
   	elsif current_user.user_type == 'Admin'
       @hotel_count= current_user.hotels.all.count
     else

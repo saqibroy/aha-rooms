@@ -76,7 +76,7 @@
                             <td> <%= link_to admin_user_edit_path(id: user.id), class: "btn btn-default btn-rounded btn-sm" do %>
                             <span class="fa fa-pencil"></span>
                             <% end %>
-                            <%= link_to admin_user_destroy_path, method: :delete,data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-rounded btn-sm" do %>
+                            <%= link_to admin_user_destroy_path(id: user.id), method: :delete,data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-rounded btn-sm" do %>
                             <span class="fa fa-times"></span>
                             <% end %>
                             </td>

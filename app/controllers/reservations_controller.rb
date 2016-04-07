@@ -44,7 +44,7 @@ class ReservationsController < ApplicationController
 
     respond_to do |format|
       if @reservation.save
-        ReservationMailer.reservation_email(@reservation)
+        ReservationMailer.reservation_email(@reservation).deliver
         format.html { redirect_to new_reservation_path(id: @reservation.room.id), notice: 'Reservation was successfully created.Please check your email.' }
         format.json { render :show, status: :created, location: @reservation }
       else

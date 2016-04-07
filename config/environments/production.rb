@@ -2,17 +2,21 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
-  config.action_mailer.delivery_method = :smtp
+
 # SMTP settings for gmail
 config.action_mailer.default_url_options = { :host => 'nameless-woodland-68138.herokuapp.com' }
-config.action_mailer.smtp_settings = {
- :address              => "smtp.gmail.com",
- :port                 => 587,
- :domain               => 'gmail.com',
- :user_name            => "saqibsohail007@gmail.com",
- :password             => "saqi2020",
- :authentication       => "plain",
-:enable_starttls_auto => true
+ActionMailer::Base.delivery_method = :smtp
+ActionMailer::Base.perform_deliveries = true
+ActionMailer::Base.raise_delivery_errors = true
+ActionMailer::Base.smtp_settings = 
+{
+
+  :address            => 'smtp.gmail.com',
+  :port               => 587,
+  :domain             => 'gmail.com', #you can also use google.com
+  :authentication     => :plain,
+  :user_name          => 'saqibsohail007@gmail.com',
+  :password           => 'saqi2020'
 }
 
   config.serve_static_files = true

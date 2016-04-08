@@ -2,10 +2,11 @@ class ReservationMailer < ApplicationMailer
 	 default from: "saqibsohail007@gmail.com"
 	 def reservation_email(reservation)
     @user = reservation.user
-    @admin= reservation.room.hotel.user
+    @recipients = [@user.email]
+    @recipients << reservation.room.hotel.user.email if reservation.room.hotel.user
+    @recipients << "octasolutionx@gmail.com" 
     @reservation= reservation
 
-    mail(to: @user.email, subject: 'Reservation Detail')
-    mail(to: @admin.email, subject: 'New Reservation Detail')
+    mail(to: @recipients, subject: 'Reservation Detail')
     end
 end

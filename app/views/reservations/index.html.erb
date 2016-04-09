@@ -89,7 +89,7 @@
                                                 <td><%= reservation.check_out_date %></td>
                                                 <td><%= reservation.total_price %></td>
                                                 <td><%= reservation.room.hotel.name %></td>
-                                                <td><%= reservation.room.room_no if reservation.room %></td>
+                                                <td><%= reservation.room.try(:room_no) %></td>
                                                 <td> 
                             <%= link_to reservation, method: :delete,data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-rounded btn-sm" do %>
                             <span class="fa fa-times"></span>

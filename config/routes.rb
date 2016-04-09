@@ -24,6 +24,9 @@ Rails.application.routes.draw do
   get 'admin/features'
   get 'admin/feature_new'
   post 'admin/feature_create'
+  get 'admin/reservation_cancel'
+  get 'admin/cancel_requests'
+  get 'admin/request_deny'
 
   resources :hotels
   # The priority is based upon order of creation: first created -> highest priority.

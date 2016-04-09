@@ -1,4 +1,8 @@
- <!-- START PAGE CONTAINER -->
+
+<% flash.each do |name,msg|%>
+                <%= content_tag :div, msg, class: "alert alert-danger flash-popup", role: "alert" %>
+                <% end %>
+                 <!-- START PAGE CONTAINER -->
         <div class="page-container">
             
             <!-- START PAGE SIDEBAR -->

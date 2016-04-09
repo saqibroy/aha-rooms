@@ -140,6 +140,31 @@ def feature_destroy
     end
   end
 
+  def reservation_cancel
+    @reservation= Reservation.find(params[:id])
+    if @reservation.cancel?
+      redirect_to reservations_path,notice: 'You already requested for cancel reservation, Wait for Admins approvel'
+      
+      else
+        @reservation.cancel= true
+        @reservation.save
+        redirect_to reservations_path,notice: 'Your cancelation request sent successfully, Wait for Admins approvel'
+    end
+  end
+
+  def cancel_requests
+    @reservations= Reservation.all.where(cancel: true)
+  end
+
+  def request_deny
+    @reservation= Reservation.find(params[:id])
+    @reservation.cancel = false
+    @reservation.save
+    redirect_to admin_cancel_requests_path,notice: 'Your successfully denied the cancelation request.'
+  end
+
+
+
   private
   def set_user
       @user = User.find(params[:id])

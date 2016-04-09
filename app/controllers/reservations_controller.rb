@@ -53,6 +53,7 @@ class ReservationsController < ApplicationController
       end
     end
   end
+  
 
   # PATCH/PUT /reservations/1
   # PATCH/PUT /reservations/1.json
@@ -88,9 +89,10 @@ class ReservationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservation_params
-      params.require(:reservation).permit(:no_of_rooms, :total_price, :check_in_date, :check_out_date, :room_id, :user_id)
+      params.require(:reservation).permit(:no_of_rooms,:cancel, :total_price, :check_in_date, :check_out_date, :room_id, :user_id)
     end
     def set_room
       @room= Room.find(params[:id])
     end
+
 end

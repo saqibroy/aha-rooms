@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160406072444) do
+ActiveRecord::Schema.define(version: 20160409174851) do
 
   create_table "features", force: :cascade do |t|
     t.string   "name"
@@ -50,8 +50,9 @@ ActiveRecord::Schema.define(version: 20160406072444) do
     t.datetime "check_out_date"
     t.integer  "room_id"
     t.integer  "user_id"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                                             null: false
+    t.datetime "updated_at",                                             null: false
+    t.boolean  "cancel",                                 default: false
   end
 
   create_table "room_images", force: :cascade do |t|

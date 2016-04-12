@@ -827,21 +827,7 @@ header #logo {
 .navbar #logo {
 	width: 100%;
 }
-/*.navbar.shrink #logo {
-	-webkit-transition: all linear 0.3s;
-	-moz-transition: all linear 0.3s;
-	-o-transition: all linear 0.3s;
-	transition: all linear 0.3s;
-	padding: 10px 60px 10px 0;
-}
-.navbar.shrink .navbar-nav > li > a {
-	padding-top: 22px;
-	padding-bottom: 22px;
-	-webkit-transition: all linear 0.3s;
-	-moz-transition: all linear 0.3s;
-	-o-transition: all linear 0.3s;
-	transition: all linear 0.3s;
-}*/
+
 }
 /* Nav Yamm3 Megamenu */
 .yamm .nav, .yamm .collapse, .yamm .dropup, .yamm .dropdown {

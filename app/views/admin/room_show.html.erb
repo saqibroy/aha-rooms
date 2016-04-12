@@ -1,3 +1,7 @@
+<%= stylesheet_link_tag    'admin', media: 'all' %>
+  
+  <%= csrf_meta_tags %>
+
 <% flash.each do |name,msg|%>
                 <%= content_tag :div, msg, class: "alert alert-danger flash-popup", role: "alert" %>
                 <% end %>
@@ -41,7 +45,11 @@
                 </ul>
                 <!-- END BREADCRUMB -->  
                 <div class="page-title">                    
-                    <h2><span class="fa fa-arrow-circle-o-left"></span>Room No <%= @room.room_no %></h2>
+                    <h2></span><%= @room.title %></h2>
+                    
+                </div>
+                <div class="page-title">
+                    <h3></span>Room No <%= @room.room_no %></h3>
                 </div>
                 <div class="page-content-wrap">
                  <div class="row">
@@ -130,3 +138,6 @@
                 </div>
             </div>
         </div>
+
+
+        <%= javascript_include_tag 'admin' %>

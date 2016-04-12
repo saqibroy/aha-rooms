@@ -2,6 +2,9 @@ class AdminController < ApplicationController
 	before_action :authenticate_user!
   before_action :set_user, only: [ :user_edit, :user_update, :user_destroy]
   before_action :set_feature, only: [ :feature_destroy]
+  layout false
+
+
   def index
   	if current_user.user_type == "superAdmin"
   		@hotel_count= Hotel.all.count
@@ -163,6 +166,29 @@ def feature_destroy
     redirect_to admin_cancel_requests_path,notice: 'Your successfully denied the cancelation request.'
   end
 
+  def testimonial_new
+    @room= Room.find(params[:id])
+    @testimonial = current_user.testimonials.build
+
+  end
+  
+  def testimonial_create
+    
+    @testimonial = current_user.testimonials.build(testimonial_params)
+    @testimonial.room_id= params[:id]
+    
+
+    respond_to do |format|
+      if @testimonial.save
+        format.html { redirect_to reservations_path, notice: 'testimonial was successfully created.' }
+        format.json { render :testimonial_new, status: :created, location: @testimonial }
+      else
+        format.html { render :testimonial_new }
+        format.json { render json: @testimonial.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 
 
   private
@@ -180,4 +206,10 @@ def feature_destroy
    def feature_params
       params.require(:main_feature).permit(:name)
     end
+   def testimonial_params
+      params.require(:testimonial).permit(:content)
+    end
+
+
+
 end

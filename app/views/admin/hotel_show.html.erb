@@ -1,3 +1,7 @@
+<%= stylesheet_link_tag    'admin', media: 'all' %>
+  
+  <%= csrf_meta_tags %>
+
  <% flash.each do |name,msg|%>
                 <%= content_tag :div, msg, class: "alert alert-danger flash-popup", role: "alert" %>
                 <% end %>
@@ -122,3 +126,6 @@
                 </div>
             </div>
         </div>
+
+
+        <%= javascript_include_tag 'admin' %>

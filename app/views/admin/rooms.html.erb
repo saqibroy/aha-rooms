@@ -1,3 +1,8 @@
+<%= stylesheet_link_tag    'admin', media: 'all' %>
+  
+  <%= csrf_meta_tags %>
+
+
 <% flash.each do |name,msg|%>
                 <%= content_tag :div, msg, class: "alert alert-danger flash-popup", role: "alert" %>
                 <% end %>
@@ -62,8 +67,10 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
+                                                <th>TITLE</th>
                                                 <th>ROOM NO</th>
                                                 <th>DESCRIPTION</th>
+                                                <th>SHORT DESC</th>
                                                 <th>NUM OF BEDS</th>
                                                 <th>NUM OF PEOPLE</th>
                                                 <th>MEAL</th>
@@ -77,8 +84,10 @@
                                         <% @rooms.each do |room| %>
                                             <tr>
                                                 <td><%= room.id %></td>
+                                                <td><%= room.title %></td>
                                                 <td><%= room.room_no %></td>
                                                 <td><%= room.description %></td>
+                                                <td><%= room.short_desc %></td>
                                                 <td><%= room.total_beds %></td>
                                                 <td><%= room.total_people %></td>
                                                 <td><%= room.meal %></td>
@@ -133,3 +142,7 @@
                 </div>
             </div>
         </div>
+
+
+
+        <%= javascript_include_tag 'admin' %>

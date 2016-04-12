@@ -1,28 +1,45 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
-//
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// compiled file.
-//
-// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
-// about supported directives.
-//
-//= require js/plugins/jquery/jquery.min
-//= require jquery_ujs
-//= require js/plugins/jquery/jquery-ui.min
-//= require js/plugins/bootstrap/bootstrap.min
-//= require js/plugins/icheck/icheck.min
-//= require js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min
-//= require js/plugins/datatables/jquery.dataTables.min
-//= require js/plugins
-//= require js/actions
-//= require cocoon
-//= require availability-calendar
+//= require jsF/jquery-1.11.0.min
+//= require jsF/bootstrap.min
+//= require jsF/bootstrap-hover-dropdown.min
+//= require jsF/owl.carousel.min
+//= require jsF/jquery.parallax-1.1.3
+//= require jsF/jquery.nicescroll
+//= require jsF/jquery.prettyPhoto
+//= require jsF/jquery-ui-1.10.4.custom.min
+//= require jsF/jquery.jigowatt
+//= require jsF/jquery.sticky
+//= require jsF/waypoints.min
+//= require jsF/jquery.isotope.min
+//= require jsF/jquery.gmap.min
+//= require rs-plugin/js/jquery.themepunch.plugins.min
+//= require rs-plugin/js/jquery.themepunch.revolution.min
+//= require jsF/custom
 
 
 
 
-$(".flash-popup" ).fadeOut(2000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

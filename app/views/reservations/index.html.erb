@@ -1,4 +1,9 @@
-<% flash.each do |name,msg|%>
+<%= stylesheet_link_tag    'admin', media: 'all' %>
+  
+  <%= csrf_meta_tags %>
+
+
+ <% flash.each do |name,msg|%>
                 <%= content_tag :div, msg, class: "alert alert-danger flash-popup", role: "alert" %>
                 <% end %>
 
@@ -92,6 +97,7 @@
                             <%= link_to admin_reservation_cancel_path(id: reservation.id),data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-rounded btn-sm" do %>
                             <span class="fa fa-times"></span>
                             <% end %>
+                            <%= link_to "Add Testimonial",admin_testimonial_new_path(id: reservation.room.id), class: "btn btn-primary" %>
                             
                             </td>
                             
@@ -133,7 +139,7 @@
         </div>
 
 
-
+<%= javascript_include_tag 'admin' %>
 
 
 

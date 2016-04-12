@@ -1,4 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
+	layout false
 	def create
     super #Nothing special here.
   end

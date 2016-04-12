@@ -3,6 +3,7 @@ class Room < ActiveRecord::Base
 	has_many :features
 	has_many :room_images
 	has_many :reservations
+	has_many :testimonials
 	accepts_nested_attributes_for :features, reject_if: :all_blank, allow_destroy: true
 	accepts_nested_attributes_for :room_images, reject_if: :all_blank, allow_destroy: true
 end

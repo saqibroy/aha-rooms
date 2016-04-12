@@ -1,2 +1,321 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<%= render 'layouts/header' %>
+<!-- Revolution Slider -->
+<section class="revolution-slider">
+  <div class="bannercontainer">
+    <div class="banner">
+      <ul>
+        <!-- Slide 1 -->
+        <li data-transition="fade" data-slotamount="7" data-masterspeed="1500" > 
+          <!-- Main Image --> 
+          <img src="images/slides/slide1.jpg" style="opacity:0;" alt="slidebg1"  data-bgfit="cover" data-bgposition="left bottom" data-bgrepeat="no-repeat"> 
+          <!-- Layers -->           
+          <!-- Layer 1 -->
+          <div class="caption sft revolution-starhotel bigtext"  
+          				data-x="505" 
+                        data-y="30" 
+                        data-speed="700" 
+                        data-start="1700" 
+                        data-easing="easeOutBack"> 
+						<span><i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i></span> AHA-Rooms Mallorca <span><i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i></span></div>
+        </li>
+		<!-- Slide 2 -->
+        <li data-transition="boxfade" data-slotamount="7" data-masterspeed="1000" > 
+          <!-- Main Image --> 
+          <img src="images/slides/slider2.jpg"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat"> 
+        <div class="caption sft revolution-starhotel bigtext"  
+                  data-x="505" 
+                        data-y="30" 
+                        data-speed="700" 
+                        data-start="1700" 
+                        data-easing="easeOutBack"> 
+            <span><i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i></span> AHA-Rooms Mallorca <span><i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i></span></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Reservation form -->
+<section id="reservation-form">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">         
+        <form class="form-inline reservation-horizontal clearfix" role="form" method="post" action="php/reservation.php" name="reservationform" id="reservationform">
+        <div id="message"></div><!-- Error message display -->
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="form-group">
+              <select class="form-control" name="destination" >
+                  <option selected="selected" disabled="disabled">Mallorca</option>
+                  <option value="Mallorca">Mallorca</option>
+                </select>
+
+               <!--  <input name="destination" type="text" id="pac-input" value="" class="form-control" placeholder="Please enter your destination" required />
+                <div id="map1"></div> -->
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="form-group">
+                
+                <i class="fa fa-calendar infield"></i>
+                <input name="checkin" type="text" id="checkin" value="" class="form-control" placeholder="Check-in"/>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="form-group">
+                <i class="fa fa-calendar infield"></i>
+                <input name="checkout" type="text" id="checkout" value="" class="form-control" placeholder="Check-out"/>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="form-group">
+                <select class="form-control" name="room" id="room">
+                  <option selected="selected" disabled="disabled">Rooms</option>
+                  <option value="Single">1</option>
+                  <option value="Double">2</option>
+                  <option value="Deluxe">3</option>
+                  <option value="Single">4</option>
+                  <option value="Double">5</option>
+                  <option value="Deluxe">6</option>
+                  <option value="Single">7</option>
+                  <option value="Double">8</option>
+                  <option value="Deluxe">9</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-sm-1">
+              <div class="form-group">
+                <div class="guests-select">
+                  <i class="fa fa-user infield"></i>
+                  <div class="total form-control" id="test">Guests</div>
+                  <div class="guests">
+                    <div class="form-group adults">
+                      <label for="adults">Adults</label>
+                      <div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="+18 years"> <i class="fa fa-info-circle fa-lg"> </i> </div>
+                      <select name="adults" id="adults" class="form-control">
+                        <option value="1">1 adult</option>
+                        <option value="2">2 adults</option>
+                        <option value="3">3 adults</option>
+                      </select>
+                    </div>
+                    <div class="form-group children">
+                      <label for="children">Children</label>
+                      <div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="0 till 18 years"> <i class="fa fa-info-circle fa-lg"> </i> </div>
+                      <select name="children" id="children" class="form-control">
+                        <option value="0">0 children</option>
+                        <option value="1">1 child</option>
+                        <option value="2">2 children</option>
+                        <option value="3">3 children</option>
+                      </select>
+                    </div>
+                    <button type="button" class="btn btn-default button-save btn-block">Save</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <button type="submit" class="btn btn-primary btn-block">Search</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="usp feature">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 ">
+        <h2 class="feature-heading"><span>Guaranteed features in all AHA-Rooms</span></h2>
+      </div>
+      <div class="feature-row">
+      <div class="col-sm-2 bounceIn appear" data-start="0">
+        <div class="box-icon">
+          <div class="circle feature-small"><i class="fa fa-wifi fa-lg"></i></div>
+          <h3>Wifi</h3>
+        </div>
+      </div>
+      <div class="col-sm-2 bounceIn appear" data-start="400">
+          <div class="box-icon">
+          <div class="circle feature-small"><i class="fa fa-bed fa-lg"></i></div>
+          <h3>Comfortable Bed</h3>
+          </div>
+        </div>
+      <div class="col-sm-2 bounceIn appear" data-start="800">
+      <div class="box-icon">      
+        <div class="circle feature-small"><i class="fa fa-cutlery fa-lg"></i></div>
+        <h3>BreakFast</h3>
+        </div>
+      </div>
+      <div class="col-sm-2 bounceIn appear" data-start="800">
+      <div class="box-icon">      
+        <div class="circle feature-small"><i class="fa fa-tv fa-lg"></i></div>
+        <h3>TV</h3>
+        </div>
+      </div>
+      <div class="col-sm-2 bounceIn appear" data-start="800">
+      <div class="box-icon">      
+        <div class="circle feature-small"><i class="fa fa-paint-brush fa-lg"></i></div>
+        <h3>Clean Washroom</h3>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Rooms -->
+<section class="rooms mt50">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h2 class="lined-heading"><span>Best Deals Of the Week</span></h2>
+      </div>
+      <% @rooms.each do |room| %>
+      <!-- Room -->
+      <div class="col-sm-4">
+
+        <div class="room-thumb">
+        <% room.room_images.take(1).each do |im| %>
+        <%= image_tag im.image.url(:medium), class: "img-responsive" %>
+         <% end %>
+          <div class="mask">
+            <div class="main">
+              <h5><%= room.title %></h5>
+              <div class="price">&euro; <%= room.rate %><span>a night</span></div>
+            </div>
+            <div class="content">
+              <p><span><%= room.short_desc %></span> <%= room.description %></p>
+              <div class="row">
+              <% room.features.take(6).each_slice(3) do |features| %>
+
+                <div class="col-xs-6">
+                  <ul class="list-unstyled">
+                  <% features.each do |fe| %>
+                    <li><i class="fa fa-check-circle"></i><%= fe.name %></li>
+                    <% end %>
+                  </ul>
+                </div>
+                <% end %>
+                
+              </div>
+              <a href="room-detail.html" class="btn btn-primary btn-block">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Room -->
+      
+      <!-- Room -->
+      
+      <% end %>
+    </div>
+  </div>
+</section>
+
+
+
+
+<div class="container">
+  <div class="row"> 
+    <!-- Testimonials -->
+    <section class="testimonials mt100">
+      <div class="col-md-12">
+        <h2 class="lined-heading bounceInLeft appear" data-start="0"><span>Testimonials</span></h2>
+        <div id="owl-reviews" class="owl-carousel">
+          <div class="item">
+          <% @testimonials.each do |t| %>
+            <div class="row">
+              <div class="col-lg-2 col-md-4 col-sm-2 col-xs-12">
+              <%= image_tag t.user.image.url(:thumbb), class: "img-circle" %>
+               </div>
+              <div class="col-lg-10 col-md-8 col-sm-10 col-xs-12">
+                <div class="text-balloon"><%= t.content %> <span><%= t.user.name %>, <%= t.room.title %></span> </div>
+              </div>
+            </div>
+            <% end %>
+            
+          </div>
+          <div class="item">
+          <% @testimonialsR.each do |t| %>
+            <div class="row">
+              <div class="col-lg-2 col-md-4 col-sm-2 col-xs-12"> <%= image_tag t.user.image.url(:thumbb), class: "img-circle" %></div>
+              <div class="col-lg-10 col-md-8 col-sm-10 col-xs-12">
+                <div class="text-balloon"><%= t.content %> <span><%= t.user.name %>, <%= t.room.title %></span> </div>
+              </div>
+            </div>
+            <% end %>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+    
+  </div>
+</div>
+
+<!-- Call Mallorca certainly is an ideal holiday destination for those that enjoy food and drink, depending on your preferences you will find everything from hamburgers and chips to traditionally sourced and cooked dishes available.To Action -->
+<section class="mt50">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <h2>
+          AHA-Rooms MALLORCA PHILOSPHY</h2>
+
+        <p>
+         Got the best deals in the airline and ready to fly to Mallorca? Great! But you are still searching for a Hotel Room that offers you the right predictability to make your stay in Mallorca problem free?
+        </p>
+        <p>
+Thousands of offers are available online for booking the Hotel Rooms but you are not sure whether you will
+get the basic facilities like running showers, a working Wi­Fi and a good breakfast which will meet your
+expectations?
+        </p>
+        <p>
+          No worries! AHA-­Rooms offers you the best price Hotel rooms with guaranteed features like WI­FI,
+breakfast, clean wash rooms and much more. So don’t just book a room for your stay book an AHA­-Room
+instead and enjoy the AHA! EXPERIENCE.<br><br>
+<span class="bofore-footer">AHA­-Rooms.com<br><br></span>
+<span class="bofore-footer">Stay Smart!</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%= render 'layouts/footer' %>
+
+
+ <script>
+function initMap() {
+     
+     var options = {
+  types: ['(cities)'],
+  componentRestrictions: {country: "es"}
+ };
+
+  var map = new google.maps.Map(document.getElementById('map1'), {
+    center: {lat: -33.8688, lng: 151.2195}
+  });
+  var input = /** @type {!HTMLInputElement} */(
+    document.getElementById('pac-input'));
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+ // var autocomplete = new google.maps.places.Autocomplete(input, options);
+
+  var autocomplete = new google.maps.places.Autocomplete(input, options);
+  autocomplete.bindTo('bounds', map);
+  autocomplete.addListener('place_changed', function() {
+    infowindow.close();
+    marker.setVisible(false);
+    infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+    infowindow.open(map, marker);
+  });
+    
+}
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDX6oBV_OjbsiVA210ZmmJbEzwC7MsMvJY&signed_in=true&libraries=places&callback=initMap"
+        async defer></script>
+
+

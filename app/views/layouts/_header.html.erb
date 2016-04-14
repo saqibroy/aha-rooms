@@ -21,9 +21,16 @@
           </li>
           <li class=""> <a href="#" data-toggle="dropdown" class="dropdown-toggle js-activated"><i class="fa fa-user"></i> My Account<b class="caret"></b></a>
             <ul class="dropdown-menu">
+            <% if !current_user.present? %>
               <li><a href="<%= new_user_session_path %>"><i class="fa fa-user"></i> &nbsp;LogIn</a></li>
               <li><a href="<%= new_user_registration_path %>"><i class="fa fa-user"></i> &nbsp;New?&nbsp;SignUp</a></li>
+              <% else %>
               <li><a href="<%= admin_path %>"><i class="fa fa-user"></i> &nbsp;My Panel</a></li>
+              <li><%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fa fa-user"></i>&nbsp;Sign Out
+              <% end %></li>
+              
+              <% end %>
             </ul>
           </li>
           <li class="dropdown"> <a href="contact-01.html" >Contact Us</a>

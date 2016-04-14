@@ -48,7 +48,7 @@ class AdminController < ApplicationController
     if current_user.user_type == "superAdmin"
     @users= User.all.where(admin: false,user_type: "Admin")
   else
-    redirect_to admin_index_path, notice: "Only super admin has access to this page"
+    redirect_to admin_path, notice: "Only super admin has access to this page"
   end
   end
   def user_request_done

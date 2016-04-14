@@ -1,7 +1,7 @@
 <script type="text/javascript">$(document).ready(function(){$('#parallax-pagetitle').parallax("50%", -0.55);});</script>
 
 <section class="parallax-effect">
-  <div id="parallax-pagetitle" style="background-image: url(./images/parallax/parallex1.jpg);">
+  <div id="parallax-pagetitle" style="background-image: url(/images/parallax/parallex1.jpg);">
     <div class="color-overlay"> 
       <!-- Page title -->
       <div class="container">
@@ -190,7 +190,7 @@
          <% end %>
           <div class="mask">
             <div class="main">
-              <h5><%= room.title %></h5>
+              <h5><%= room.title %>,<%= room.hotel.name %></h5>
               <div class="price">&euro; <%= room.rate %><span>a night</span></div>
             </div>
             <div class="content">

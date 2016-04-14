@@ -1,4 +1,4 @@
-<%= render 'layouts/header' %>
+
 <!-- Revolution Slider -->
 <section class="revolution-slider">
   <div class="bannercontainer">
@@ -201,7 +201,8 @@
                 <% end %>
                 
               </div>
-              <a href="room-detail.html" class="btn btn-primary btn-block">Read More</a>
+              <%= link_to "Read More",room, class: "btn btn-primary btn-block" %>
+              
             </div>
           </div>
         </div>
@@ -284,7 +285,7 @@ instead and enjoy the AHA! EXPERIENCE.<br><br>
   </div>
 </section>
 
-<%= render 'layouts/footer' %>
+
 
 
  <script>

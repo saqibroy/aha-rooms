@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: [:show, :edit, :update, :destroy]
-  layout nil
-  layout 'application', except: [:new,:edit]
+  before_action :authenticate_user!, only: [:show,:new,:edit,:destroy]
+  
 
   # GET /rooms
   # GET /rooms.json
@@ -12,16 +12,20 @@ class RoomsController < ApplicationController
   # GET /rooms/1
   # GET /rooms/1.json
   def show
+    @rooms= Room.all.order("RANDOM()").limit(3)
+    @reservation=current_user.reservations.build
   end
 
   # GET /rooms/new
   def new
     @hotel= Hotel.find(params[:id])
     @room = @hotel.rooms.build
+    render layout: false
   end
 
   # GET /rooms/1/edit
   def edit
+    render layout: false
   end
 
   # POST /rooms

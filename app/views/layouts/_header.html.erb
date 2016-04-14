@@ -6,9 +6,10 @@
         <button type="button" data-toggle="collapse" data-target="#navbar-collapse-grid" class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
         <a href="index.html" class="navbar-brand">         
         <!-- Logo -->
-        <div id="logo"> 
-        <img id="default-logo" src="images/Logo1.jpg" alt="Starhotel" style="height:50px;"> 
-        <img id="retina-logo" src="images/Logo1.jpg" alt="Starhotel" style="height:50px;"> 
+        <div id="logo">
+        <%= image_tag("Logo1.jpg", :alt => "AHA Rooms",id: "default-logo", style: "height:50px;") %> 
+        
+        
         <!-- <img id="default-logo" src="images/logo-site.png" alt="Starhotel" style="height:44px;"> 
         <img id="retina-logo" src="images/logo-site.png" alt="Starhotel" style="height:44px;">  -->
         </div>
@@ -18,7 +19,7 @@
           <li class="dropdown">
            <a href="index.html"><i class="fa fa-mobile fa-lg"></i> &nbsp;AHA-Rooms App</a>
           </li>
-          <li class="dropdown"> <a href="#" data-toggle="dropdown" class="dropdown-toggle js-activated"><i class="fa fa-user"></i> My Account<b class="caret"></b></a>
+          <li class=""> <a href="#" data-toggle="dropdown" class="dropdown-toggle js-activated"><i class="fa fa-user"></i> My Account<b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li><a href="<%= new_user_session_path %>"><i class="fa fa-user"></i> &nbsp;LogIn</a></li>
               <li><a href="<%= new_user_registration_path %>"><i class="fa fa-user"></i> &nbsp;New?&nbsp;SignUp</a></li>
@@ -29,7 +30,7 @@
           </li>
           <li class="dropdown"> <a href="#"><i class="fa fa-phone"></i> Book Today &nbsp; 0034971509183</a> 
           </li>
-          <li class="dropdown"> <a href="#">
+          <li> <a href="#">
               <div id="google_translate_element"></div><script type="text/javascript">
               function googleTranslateElementInit() {
                 new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'de,en,es', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');

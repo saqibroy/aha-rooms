@@ -41,7 +41,7 @@ class ReservationsController < ApplicationController
   def create
     @reservation = @room.reservations.build(reservation_params)
     @reservation.total_price= @reservation.room.rate_after_disc.to_i * (@reservation.check_out_date.strftime("%d").to_i - @reservation.check_in_date.strftime("%d").to_i)
-
+    @reservation.total_price= @reservation.total_price * @reservation.no_of_rooms
     respond_to do |format|
       if @reservation.save
         ReservationMailer.reservation_email(@reservation).deliver
@@ -61,6 +61,7 @@ class ReservationsController < ApplicationController
     respond_to do |format|
       if @reservation.update(reservation_params)
         @reservation.total_price= @reservation.room.rate_after_disc.to_i * (@reservation.check_out_date.strftime("%d").to_i - @reservation.check_in_date.strftime("%d").to_i)
+        @reservation.total_price= @reservation.total_price * @reservation.no_of_rooms
         @reservation.save
         format.html { redirect_to @reservation, notice: 'Reservation was successfully updated.' }
         format.json { render :show, status: :ok, location: @reservation }
@@ -89,7 +90,7 @@ class ReservationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservation_params
-      params.require(:reservation).permit(:no_of_rooms,:cancel, :total_price, :check_in_date, :check_out_date, :room_id, :user_id)
+      params.require(:reservation).permit(:no_of_rooms,:cancel, :total_price, :check_in_date, :check_out_date, :room_id, :user_id,:guests)
     end
     def set_room
       @room= Room.find(params[:id])

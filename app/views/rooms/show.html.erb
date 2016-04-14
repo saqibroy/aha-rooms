@@ -1,44 +1,238 @@
-<p id="notice"><%= notice %></p>
+<script type="text/javascript">$(document).ready(function(){$('#parallax-pagetitle').parallax("50%", -0.55);});</script>
 
-<p>
-  <strong>Room no:</strong>
-  <%= @room.room_no %>
-</p>
+<section class="parallax-effect">
+  <div id="parallax-pagetitle" style="background-image: url(./images/parallax/parallex1.jpg);">
+    <div class="color-overlay"> 
+      <!-- Page title -->
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <ol class="breadcrumb">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="room-list.html">Room list view</a></li>
+              <li class="active">Room detail</li>
+            </ol>
+            <h1>Room detail</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="container mt50">
+  <div class="row"> 
+    <!-- Slider -->
+    <section class="standard-slider room-slider">
+      <div class="col-sm-12 col-md-8">
+        <div id="owl-standard" class="owl-carousel">
+        <% @room.room_images.each do |im| %>
 
-<p>
-  <strong>Rate:</strong>
-  <%= @room.rate %>
-</p>
+          <div class="item"> <a href="#" data-rel="prettyPhoto[gallery1]">
+          <%= image_tag im.image.url(:slider), class: "img-responsive" %>
+          
+          </a>
+           </div>
+           <% end %>
+         
+        </div>
+      </div>
+    </section>
+    
+    <!-- Reservation form -->
+    <section id="reservation-form" class="mt50 clearfix">
+      <div class="col-sm-12 col-md-4">
+      <%= simple_form_for(@reservation,:url => home_reservation_new_path, :method => :post,input_html: {class: "reservation-vertical clearfix", id: "reservationform"}) do |f| %>
+        
+          <h2 class="lined-heading"><span>Reservation</span></h2>
+          <div class="price">
+            <h4><%= @room.title %></h4>
+            &euro; <%= @room.rate_after_disc %>,-<span> a night</span></div>
+          <div id="message"></div>
+          <!-- Error message display -->
+          <%= f.input :room_id, :as => :hidden,
+      :input_html => {
+        :value => @room.id,
+        :id => "room"
+      } %>
+          
+          <div class="form-group">
+            <label for="checkin">Check-in</label>
+            <div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-In is from 11:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
+            <i class="fa fa-calendar infield"></i>
+            
+            <input name="reservation[check_in_date]" type="text" id="checkin" value="" class="form-control" placeholder="Check-in"/>
+          </div>
+          <div class="form-group">
+            <label for="checkout">Check-out</label>
+            <div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-out is from 12:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
+            <i class="fa fa-calendar infield"></i>
+            <input name="reservation[check_out_date]" type="text" id="checkout" value="" class="form-control" placeholder="Check-out"/>
+          </div>
+          <div class="form-group">
+            <div class="guests-select">
+              <label>Guests</label>
+              
+              
+                <div class="form-group">
+             
+                <select class="form-control" name="reservation[guests]" id="room">
+                  <option selected="selected" disabled="disabled">Guests</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                  <option>9</option>
+                </select>
+              </div>
+              
+               <div class="form-group">
+               <label>Rooms</label>
+                <select class="form-control" name="reservation[no_of_rooms]" id="room">
+                  <option selected="selected" disabled="disabled">Rooms</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                  <option>9</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <input type="hidden" name="id" value="<%= @room.id%>">
+            <!-- <a href="#" class="btn btn-primart btn-block">Book Now</a> -->
+          <button id="book-now" class="btn btn-primary btn-block">Book Now</button>
+          <% end %>
+          <span class="book-term"><a href="terms.html" target="_blank">Terms and Conditions</a></span>
+        </form>
+      </div>
+    </section>
+    <%= month_calendar events: @room.reservations do |date, reservations| %>
+  <%= date %>
 
-<p>
-  <strong>Discount:</strong>
-  <%= @room.discount %>
-</p>
 
-<p>
-  <strong>Available:</strong>
-  <%= @room.available %>
-</p>
+  <% reservations.each do |reservation| %>
+    <div>
+      
+      <%= link_to "Room No: #{ reservation.room.room_no }", reservation.room %><br>
+      <%= reservation.check_out_date.strftime("Check Out Date %m/%d/%Y") %>
+    </div>
+  <% end %>
+<% end %>
+    <!-- Room Content -->
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-7 mt50">
+            <h2 class="lined-heading"><span>Room Details</span></h2>
+            <h3 class="mt50">Table overview</h3>
+            <table class="table table-striped mt30">
+              <tbody>
+              <% @room.features.each_slice(3) do |features| %>
+                <tr>
+                <% features.each do |fe| %>
+                  <td><i class="fa fa-check-circle"></i> <%= fe.name %></td>
+                  <% end %>
+                </tr>
+                <% end %>
+                
+              </tbody>
+            </table>
+            <p class="mt50"><%= @room.description %></p>
+          </div>
+          <div class="col-sm-5 mt50">
+            <h2 class="lined-heading"><span>Overview</span></h2>
+            
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#overview" data-toggle="tab">Overview</a></li>
+              <li><a href="#facilities" data-toggle="tab">Facilities</a></li>
+              <li><a href="#extra" data-toggle="tab">Extra</a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div class="tab-pane fade in active" id="overview">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse interdum eleifend augue, quis rhoncus purus fermentum. In hendrerit risus arcu, in eleifend metus dapibus varius. Nulla dolor sapien, laoreet vel tincidunt non, egestas non justo. Phasellus et mattis lectus, et gravida urna.</p>
+                <p><%= image_tag("tab/first.jpg", :alt => "food", class: "pull-right") %>  Donec pretium sem non tincidunt iaculis. Nunc at pharetra eros, a varius leo. Mauris id hendrerit justo. Mauris egestas magna vitae nisi ultricies semper. Nam vitae suscipit magna. Nam et felis nulla. Ut nec magna tortor. Nulla dolor sapien, laoreet vel tincidunt non, egestas non justo. </p>
+              </div>
+              <div class="tab-pane fade" id="facilities">Phasellus sodales justo felis, a vestibulum risus mattis vitae. Aliquam vitae varius elit, non facilisis massa. Vestibulum luctus diam mollis gravida bibendum. Aliquam mattis velit dolor, sit amet semper erat auctor vel. Integer auctor in dui ac vehicula. Integer fermentum nunc ut arcu feugiat, nec placerat nunc tincidunt. Pellentesque in massa eu augue placerat cursus sed quis magna.</div>
+              <div class="tab-pane fade" id="extra">Aa vestibulum risus mattis vitae. Aliquam vitae varius elit, non facilisis massa. Vestibulum luctus diam mollis gravida bibendum. Aliquam mattis velit dolor, sit amet semper erat auctor vel. Integer auctor in dui ac vehicula. Integer fermentum nunc ut arcu feugiat, nec placerat nunc tincidunt. Pellentesque in massa eu augue placerat cursus sed quis magna.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @room.description %>
-</p>
+<!-- Other Rooms -->
+<section class="rooms mt50">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h2 class="lined-heading"><span>Other rooms</span></h2>
+      </div>
+      <!-- Room -->
+      <% @rooms.each do |room| %>
+      <!-- Room -->
+      <div class="col-sm-4">
 
-<p>
-  <strong>Total beds:</strong>
-  <%= @room.total_beds %>
-</p>
+        <div class="room-thumb">
+        <% room.room_images.take(1).each do |im| %>
+        <%= image_tag im.image.url(:medium), class: "img-responsive" %>
+         <% end %>
+          <div class="mask">
+            <div class="main">
+              <h5><%= room.title %></h5>
+              <div class="price">&euro; <%= room.rate %><span>a night</span></div>
+            </div>
+            <div class="content">
+              <p><span><%= room.short_desc %></span> <%= room.description %></p>
+              <div class="row">
+              <% room.features.take(6).each_slice(3) do |features| %>
 
-<p>
-  <strong>Total people:</strong>
-  <%= @room.total_people %>
-</p>
+                <div class="col-xs-6">
+                  <ul class="list-unstyled">
+                  <% features.each do |fe| %>
+                    <li><i class="fa fa-check-circle"></i><%= fe.name %></li>
+                    <% end %>
+                  </ul>
+                </div>
+                <% end %>
+                
+              </div>
+              <%= link_to "Read More",room, class: "btn btn-primary btn-block" %>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Room -->
+      
+      <!-- Room -->
+      
+      <% end %>
+    </div>
+  </div>
+</section>
 
-<p>
-  <strong>Meal:</strong>
-  <%= @room.meal %>
-</p>
 
-<%= link_to 'Edit', edit_room_path(@room) %> |
-<%= link_to 'Back', rooms_path %>
+
+
+
+<!-- Go-top Button -->
+<div id="go-top"><i class="fa fa-angle-up fa-2x"></i></div>
+<script type="text/javascript">
+  $(document).ready(function () {
+       $("#book-now").click(function () {
+          window.location.href ="guest-detail.html";
+      })
+})
+</script>

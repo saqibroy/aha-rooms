@@ -2,8 +2,7 @@ class HotelsController < ApplicationController
   before_action :set_hotel, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show,:index] 
   before_action :check_user, except: [:show,:index]
-  layout nil
-  layout 'application', except: [:new,:edit]
+  
 
   # GET /hotels
   # GET /hotels.json
@@ -18,11 +17,14 @@ class HotelsController < ApplicationController
 
   # GET /hotels/new
   def new
+    
     @hotel = current_user.hotels.build
+    render layout: false
   end
 
   # GET /hotels/1/edit
   def edit
+    render layout: false
   end
 
   # POST /hotels

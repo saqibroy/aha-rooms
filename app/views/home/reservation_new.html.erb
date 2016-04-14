@@ -1,0 +1,119 @@
+<script type="text/javascript">$(document).ready(function(){$('#parallax-pagetitle').parallax("50%", -0.55);});</script>
+
+<section class="parallax-effect">
+  <div id="parallax-pagetitle" style="background-image: url(./images/parallax/parallex1.jpg);">
+    <div class="color-overlay"> 
+      <!-- Page title -->
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <ol class="breadcrumb">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="room-list.html">Room Details</a></li>
+              <li class="active">Guest Details</li>
+            </ol>
+            <h1>Guest Details</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <h1>Guest Details</h1>
+      <h3>Feild mark with [*] are mandatory</h3>
+      <hr>
+    </div>
+  </div>
+  <form class="form-border">
+  <div class="row"> 
+     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+       <div class="form-group">
+              <label for="email" accesskey="E">Name</label>
+              <input name="name" type="text" id="name" value="" class="form-control" placeholder="Please enter your name"/>
+        </div>   
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+       <div class="form-group">
+              <label for="email" accesskey="E">LastName</label>
+              <input name="lname" type="text" id="lname" value="" class="form-control" placeholder="Please enter your LastName"/>
+        </div>   
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+       <div class="form-group">
+              <label for="email" accesskey="E">Address</label>
+              <textarea name="address" type="text" id="address" value="" class="form-control" placeholder="Please enter your Address"></textarea>
+       </div>
+  </div>
+  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+       <div class="form-group">
+              <label for="email" accesskey="E">ZipCode</label>
+              <input name="zip" type="text" id="name" value="" class="form-control" placeholder="Please enter your ZipCode"/>
+        </div>   
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+       <div class="form-group">
+              <label for="email" accesskey="E">City/Town</label>
+              <input name="city" type="text" id="lname" value="" class="form-control" placeholder="Please enter your City/Town"/>
+        </div>   
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+       <div class="form-group">
+              <label for="email" accesskey="E">Email</label>
+              <input name="email" type="email" id="name" value="" class="form-control" placeholder="Please enter your email"/>
+        </div>   
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+       <div class="form-group">
+              <label for="email" accesskey="E">Repeat Email</label>
+              <input name="r-email" type="email" id="lname" value="" class="form-control" placeholder="Please Repeat your email"/>
+        </div>   
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="form-group">
+               <label for="children">Country</label>
+                <select class="form-control" name="room" id="room">
+                  <option selected="selected" disabled="disabled">Select a country</option>
+                  <option value="Single">spain</option>
+                  <option value="Double">germnay</option>
+                  <option value="Deluxe">England</option>
+                  <option value="Single">United State</option>
+                  <option value="Double">Pakistan</option>
+                  <option value="Deluxe">India</option>
+                  <option value="Single">Africa</option>
+                  <option value="Double">UAE</option>
+                  <option value="Deluxe">Quwait</option>
+                </select>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <input type="checkbox" name="radio1" /> Yes, I would link to recieve information about deals and offers.
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <input type="checkbox" name="radio2" /> Yes, I accept the privacy policy and the rate conditions.
+    </div> 
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 price">
+        <h3>Payments</h3>
+       <p>Amount Payable : &euro; <%= @reservation[:total_price] %></p>
+      </div>
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+         <p>Pay Now: <i class="fa fa-cc-paypal fa-4x payments"></i><i class="fa fa-cc-visa fa-4x payments"></i><i class="fa fa-cc-mastercard fa-4x payments"></i><i class="fa fa-credit-card-alt fa-4x payments"></i></p>
+     </div> 
+      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 book-button">
+    <button type="submit" class="btn btn-primary btn-block">Book Now</button>
+    </div>
+
+  </form>
+  </div>
+</div>
+<!-- Go-top Button -->
+<div id="go-top"><i class="fa fa-angle-up fa-2x"></i></div>
+<script type="text/javascript">
+  $(document).ready(function () {
+       $("#book-now").click(function () {
+          window.location.href ="guest-detail.html";
+      })
+})
+</script>

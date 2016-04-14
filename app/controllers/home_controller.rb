@@ -11,6 +11,12 @@ class HomeController < ApplicationController
     @reservation[:total_price]= @reservation[:total_price].to_i * @reservation[:no_of_rooms].to_i
 
   end
+  def contact
+  	
+  end
+  def about
+  	
+  end
 
 
 

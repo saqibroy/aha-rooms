@@ -1,0 +1,67 @@
+<div id="map">
+  <p>This will be replaced with the Google Map.</p>
+</div>
+<div class="container">
+  <div class="row"> 
+    <!-- Contact form -->
+    <section id="contact-form" class="mt50">
+      <div class="col-md-8">
+        <h2 class="lined-heading"><span>Send a message</span></h2>
+        <p>To make any enquiry about AHA­Rooms please complete the form below and send it. You can also email us
+directly Support@aha.rooms.com. or call us 0034­971509183 or 0034603145782 and we will be very happy to
+help.</p>
+        <div id="message"></div>
+        <!-- Error message display -->
+        <form class="clearfix mt50" role="form" method="post" action="php/contact.php" name="contactform" id="contactform">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="name" accesskey="U"><span class="required">*</span> Your Name</label>
+                <input name="name" type="text" id="name" class="form-control" value=""/>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="email" accesskey="E"><span class="required">*</span> E-mail</label>
+                <input name="email" type="text" id="email" value="" class="form-control"/>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="subject" accesskey="S">Subject</label>
+            <select name="subject" id="subject" class="form-control">
+              <option value="Booking">Booking</option>
+              <option value="a Room">Room</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="comments" accesskey="C"><span class="required">*</span> Your message</label>
+            <textarea name="comments" rows="9" id="comments" class="form-control"></textarea>
+          </div>
+          <div class="form-group">
+            <label><span class="required">*</span> Spam Filter: &nbsp;&nbsp;&nbsp;3 + 1 =</label>		  
+            <input name="verify" type="text" id="verify" value="" class="form-control" placeholder="Please enter the outcome" />
+          </div>
+          <button type="submit" class="btn  btn-lg btn-primary">Send message</button>
+        </form>
+      </div>
+    </section>
+    
+    <!-- Contact details -->
+    <section class="contact-details mt50">
+      <div class="col-md-4">
+        <h2 class="lined-heading"><span>Address</span></h2>
+        <a href="images/contact/948x632.gif" data-rel="prettyPhoto"><img src="images/contact/contact.jpg" alt="Image 1" class="img-thumbnail img-responsive"></a>
+        <address class="mt50">
+        <strong>Starhotel</strong><br>
+        Cami Blanc 14<br>
+        Campanet 07210 Mallorca Spain<br>
+        <abbr title="Phone">P:</abbr> <a href="#">0034971509183,0034603145782</a><br>
+        <abbr title="Email">E:</abbr> <a href="#">info@aha­rooms.com</a><br>
+        <abbr title="Website">W:</abbr> <a href="#">www.aha­rooms.com</a><br>
+        </address>
+      </div>
+    </section>
+  </div>
+</div>

@@ -46,7 +46,7 @@
           <h2 class="lined-heading"><span>Reservation</span></h2>
           <div class="price">
             <h4><%= @room.title %></h4>
-            &euro; <%= @room.rate_after_disc %>,-<span> a night</span></div>
+            &euro; <%= @room.rate_after_disc %>-<span>, a night</span></div>
           <div id="message"></div>
           <!-- Error message display -->
           <%= f.input :room_id, :as => :hidden,

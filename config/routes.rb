@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :reservations
   resources :rooms
   get 'home/index'
+  get 'home/about'
+  get 'home/contact'
 
   devise_for :users, :controllers => { :registrations => 'registrations', :sessions => "sessions" }
   get "/admin" => "admin#index", :as => 'admin'

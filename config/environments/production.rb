@@ -16,7 +16,7 @@ ActionMailer::Base.smtp_settings =
   :domain             => 'gmail.com', #you can also use google.com
   :authentication     => :plain,
   :user_name          => 'saqibsohail007@gmail.com',
-  :password           => 'saqi2020'
+  :password           => 'barbadi123'
 }
 
   config.serve_static_files = true

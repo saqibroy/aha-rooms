@@ -9,8 +9,8 @@
           <div class="col-sm-12">
             <ol class="breadcrumb">
               <li><a href="index.html">Home</a></li>
-              <li><a href="room-list.html">Room list view</a></li>
-              <li class="active">Room detail</li>
+              <li><a href="room-list.html">Rooms</a></li>
+              <li class="active">Availible Rooms</li>
             </ol>
             <h1>Room detail</h1>
           </div>
@@ -41,7 +41,7 @@
     <!-- Reservation form -->
     <section id="reservation-form" class="mt50 clearfix">
       <div class="col-sm-12 col-md-4">
-      <%= simple_form_for(@reservation,:url => home_reservation_new_path, :method => :post,input_html: {class: "reservation-vertical clearfix", id: "reservationform"}) do |f| %>
+      <%= simple_form_for(@reservation,:url => home_reservation_new_path, :method => :post,:name=> :myForm,input_html: {class: "", id: "reservationform" }) do |f| %>
         
           <h2 class="lined-heading"><span>Reservation</span></h2>
           <div class="price">
@@ -108,6 +108,7 @@
           </div>
           <input type="hidden" name="id" value="<%= @room.id%>">
             <!-- <a href="#" class="btn btn-primart btn-block">Book Now</a> -->
+
           <button id="book-now" class="btn btn-primary btn-block">Book Now</button>
           <% end %>
           <span class="book-term"><a href="terms.html" target="_blank">Terms and Conditions</a></span>
@@ -191,7 +192,7 @@
           <div class="mask">
             <div class="main">
               <h5><%= room.title %>,<%= room.hotel.name %></h5>
-              <div class="price">&euro; <%= room.rate %><span>a night</span></div>
+              <div class="price">&euro; <%= room.rate_after_disc %><span>a night</span></div>
             </div>
             <div class="content">
               <p><span><%= room.short_desc %></span> <%= room.description %></p>

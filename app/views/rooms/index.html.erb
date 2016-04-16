@@ -1,41 +1,64 @@
-<p id="notice"><%= notice %></p>
+<script type="text/javascript">$(document).ready(function(){$('#parallax-pagetitle').parallax("50%", -0.55);});</script>
 
-<h1>Listing Rooms</h1>
+<section class="parallax-effect">
+  <div id="parallax-pagetitle" style="background-image: url(./images/parallax/parallex1.jpg);">
+    <div class="color-overlay"> 
+      <!-- Page title -->
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <ol class="breadcrumb">
+              <li><a href="index.html">Home</a></li>
+              <li class="active">Rooms list view</li>
+            </ol>
+            <h1>Rooms list view</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<table>
-  <thead>
-    <tr>
-      <th>Room no</th>
-      <th>Rate</th>
-      <th>Discount</th>
-      <th>Available</th>
-      <th>Description</th>
-      <th>Total beds</th>
-      <th>Total people</th>
-      <th>Meal</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<!-- Filter -->
 
-  <tbody>
-    <% @rooms.each do |room| %>
-      <tr>
-        <td><%= room.room_no %></td>
-        <td><%= room.rate %></td>
-        <td><%= room.discount %></td>
-        <td><%= room.available %></td>
-        <td><%= room.description %></td>
-        <td><%= room.total_beds %></td>
-        <td><%= room.total_people %></td>
-        <td><%= room.meal %></td>
-        <td><%= link_to 'Show', room %></td>
-        <td><%= link_to 'Edit', edit_room_path(room) %></td>
-        <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
+<!-- Rooms -->
+<section class="rooms mt100">
+  <div class="container">
+    <div class="row room-list fadeIn appear">
+    <% @rooms.each do |room| %> 
+      <!-- Room -->
+      <div class="col-sm-4 single">
+        <div class="room-thumb">
+          <% room.room_images.take(1).each do |im| %>
+        <%= image_tag im.image.url(:medium), class: "img-responsive" %>
+         <% end %>
+          <div class="mask">
+            <div class="main">
+              <h5><%= room.title %>,<%= room.hotel.name %></h5>
+              <div class="price">&euro; <%= room.rate_after_disc %><span>a night</span></div>
+            </div>
+            <div class="content">
+              <p><span><%= room.short_desc %></span> <%= room.description %></p>
+              <div class="row">
+                <% room.features.take(6).each_slice(3) do |features| %>
 
-<%= link_to 'New Room', new_room_path %>
+                <div class="col-xs-6">
+                  <ul class="list-unstyled">
+                  <% features.each do |fe| %>
+                    <li><i class="fa fa-check-circle"></i><%= fe.name %></li>
+                    <% end %>
+                  </ul>
+                </div>
+                <% end %>
+              </div>
+              <%= link_to "Read More",room, class: "btn btn-primary btn-block" %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+      <!-- Room -->
+      
+    </div>
+  </div>
+</section>

@@ -14,8 +14,12 @@
 //= require rs-plugin/js/jquery.themepunch.plugins.min
 //= require rs-plugin/js/jquery.themepunch.revolution.min
 //= require jsF/custom
+//= require jsF/login
 //= require jquery_ujs
 //= require availability-calendar
+
+
+
 
 
 

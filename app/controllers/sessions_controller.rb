@@ -1,6 +1,6 @@
 class SessionsController < Devise::SessionsController
 	before_action :check_status, only: [:create]
-	layout false
+	
 private
 def check_status
 	@user= User.find_by_email(params[:user][:email])

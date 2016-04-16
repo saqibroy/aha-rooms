@@ -704,7 +704,7 @@ header #logo {
 }
 /* Dropdown */
 .navbar-nav > li > a {
-	padding: 35px 16px;
+	padding: 35px 14px;
 }
 .navbar-nav > li:first-child {
 	padding-left: 40px;
@@ -827,8 +827,22 @@ header #logo {
 .navbar #logo {
 	width: 100%;
 }
-
-
+/*.navbar.shrink #logo {
+	-webkit-transition: all linear 0.3s;
+	-moz-transition: all linear 0.3s;
+	-o-transition: all linear 0.3s;
+	transition: all linear 0.3s;
+	padding: 10px 60px 10px 0;
+}
+.navbar.shrink .navbar-nav > li > a {
+	padding-top: 22px;
+	padding-bottom: 22px;
+	-webkit-transition: all linear 0.3s;
+	-moz-transition: all linear 0.3s;
+	-o-transition: all linear 0.3s;
+	transition: all linear 0.3s;
+}*/
+}
 /* Nav Yamm3 Megamenu */
 .yamm .nav, .yamm .collapse, .yamm .dropup, .yamm .dropdown {
 	position: static;
@@ -865,6 +879,26 @@ header #logo {
 }
 /* Vertical */
 #reservation-form .reservation-horizontal, #reservation-form .reservation-vertical, #contact-form .contact-vertical {
+	-webkit-border-radius: 5px 5px 5px 5px;
+	border-radius: 5px 5px 5px 5px;
+	border: 1px solid #ebebeb;
+	-webkit-box-shadow: 0 3px 0 0 rgba(0,0,0,0.12);
+	box-shadow: 0 3px 0 0 rgba(0,0,0,0.12);
+	padding: 15px;
+	z-index: 9999;
+	background-color:rgba(255, 255, 255, 0.15);
+}
+.new_reservation{
+	-webkit-border-radius: 5px 5px 5px 5px;
+	border-radius: 5px 5px 5px 5px;
+	border: 1px solid #ebebeb;
+	-webkit-box-shadow: 0 3px 0 0 rgba(0,0,0,0.12);
+	box-shadow: 0 3px 0 0 rgba(0,0,0,0.12);
+	padding: 15px;
+	z-index: 9999;
+	background-color:rgba(255, 255, 255, 0.15);
+}
+.search{
 	-webkit-border-radius: 5px 5px 5px 5px;
 	border-radius: 5px 5px 5px 5px;
 	border: 1px solid #ebebeb;

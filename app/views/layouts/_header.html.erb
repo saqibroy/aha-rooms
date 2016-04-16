@@ -4,20 +4,15 @@
     <div class="container">
       <div class="navbar-header">
         <button type="button" data-toggle="collapse" data-target="#navbar-collapse-grid" class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-        <a href="index.html" class="navbar-brand">         
-        <!-- Logo -->
+        <a href="<%= root_url %>" class="navbar-brand">
         <div id="logo">
-        <%= image_tag("Logo1.jpg", :alt => "AHA Rooms",id: "default-logo", style: "height:50px;") %> 
-        
-        
-        <!-- <img id="default-logo" src="images/logo-site.png" alt="Starhotel" style="height:44px;"> 
-        <img id="retina-logo" src="images/logo-site.png" alt="Starhotel" style="height:44px;">  -->
+        <%= image_tag("Logo1.jpg", :alt => "AHA Rooms",id: "default-logo", style: "height:50px;") %>
         </div>
         </a> </div>
       <div id="navbar-collapse-grid" class="navbar-collapse collapse">
         <ul class="nav navbar-nav pull-right">
           <li class="dropdown">
-           <a href="index.html"><i class="fa fa-mobile fa-lg"></i> &nbsp;AHA-Rooms App</a>
+           <a href="#"><i class="fa fa-mobile fa-lg"></i> &nbsp;AHA-Rooms App</a>
           </li>
           <li class=""> <a href="#" data-toggle="dropdown" class="dropdown-toggle js-activated"><i class="fa fa-user"></i> My Account<b class="caret"></b></a>
             <ul class="dropdown-menu">
@@ -37,13 +32,50 @@
           </li>
           <li class="dropdown"> <a href="#"><i class="fa fa-phone"></i> Book Today &nbsp; 0034971509183</a> 
           </li>
-          <li> <a href="#">
-              <div id="google_translate_element"></div><script type="text/javascript">
-              function googleTranslateElementInit() {
-                new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'de,en,es', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-              }
-              </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-          </a> 
+         <li class="dropdown">
+          <a href="#" data-toggle="dropdown" class="dropdown-toggle js-activated">Select Language<b class="caret"></b></a>
+            <ul class="dropdown-menu translation-links">
+            <li> <a href="#" class="english" data-lang="English">
+            <%= image_tag("english.png", :alt => "english", style: "display:inline;width: 14px;height:11px;") %>
+            
+             &nbsp; ENGLISH</a> </li>
+                <li> <a href="#" class="german" data-lang="German">
+                <%= image_tag("german.png", :alt => "german", style: "display:inline;width: 14px;height:11px;") %> 
+                
+                 &nbsp; GERMAN</a> </li>
+                <li> <a href="#" class="spanish" data-lang="Spanish">
+                <%= image_tag("spain.png", :alt => "spanish", style: "display:inline;width: 14px;height:11px;") %> 
+                
+                 &nbsp; SPANISH</a> </li>
+            </ul>
+            <!-- Use CSS to replace link text with flag icons -->
+            <!-- <ul class="translation-links">
+              <li><a href="#" class="spanish" data-lang="Spanish">Spanish</a></li>
+              <li><a href="#" class="german" data-lang="German">German</a></li>
+            </ul> -->
+
+            <!-- Code provided by Google -->
+            <div id="google_translate_element" style="display: none !important;" ></div>
+            <script type="text/javascript">
+               function googleTranslateElementInit() {
+                            new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'de,en,es', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+                          }
+            </script>
+            <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" type="text/javascript"></script>
+
+            <!-- Flag click handler -->
+            <script type="text/javascript">
+                $('.translation-links a').click(function() {
+                  var lang = $(this).data('lang');
+                  var $frame = $('.goog-te-menu-frame:first');
+                  if (!$frame.size()) {
+                    alert("Error: Could not find Google translate frame.");
+                    return false;
+                  }
+                  $frame.contents().find('.goog-te-menu2-item span.text:contains('+lang+')').get(0).click();
+                  return false;
+                });
+            </script>
           </li>
            <!--  <li class="dropdown" id="top-header"> 
               <button class="btn btn-default btn-xs dropdown-toggle js-activated" type="button" data-toggle="dropdown"> English <span class="caret"></span> </button>

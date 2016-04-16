@@ -1,70 +1,101 @@
-<%= stylesheet_link_tag    'admin', media: 'all' %>
-  
-  <%= csrf_meta_tags %>
-
-
-
-<div class="login-container">
-        
-            <div class="login-box animated fadeInDown">
-                <div class="login-title">Aha-Rooms</div>
-                <div class="login-body">
-                    <div class="login-title"><strong>Sign Up</strong></div>
-                    <% flash.each do |key, value| %>
-  <div class="alert alert-<%= key %>">
-    <a href="#" data-dismiss="alert" class="close">×</a>
-    <ul>
-      <li>
-        <%= value %>
-      </li>
-    </ul>
+<!-- Parallax Effect --> 
+<script type="text/javascript">$(document).ready(function(){$('#parallax-pagetitle').parallax("50%", -0.55);});</script>
+<section class="parallax-effect">
+  <div id="parallax-pagetitle" style="background-image: url(/images/parallax/parallex1.jpg);">
+    <div class="color-overlay"> 
+      <!-- Page title -->
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <ol class="breadcrumb">
+              <li><a href="<%= new_user_session_path %>">Login</a></li>
+              <li class="active">SignUp</li>
+            </ol>
+            <h1>SignUp</h1>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-<% end %>
-                    <%= simple_form_for(resource, as: resource_name,html: {class: 'form-horizontal' }, url: registration_path(resource_name)) do |f| %>
+</section>
+
+<!-- Elements --> 
+
+<!-- Buttons -->
+<section class="buttons">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6  mt50">
+        <h3 class="lined-heading"><span>SignUp</span></h3>
+        <div class="card card-container">
+        <%= image_tag("user.png",id: "profile-name", class: "profile-img-card") %> 
+            <p id="profile-name" class="profile-name-card"></p>
+            <%= simple_form_for(resource, as: resource_name,html: {class: 'form-signin' }, url: registration_path(resource_name)) do |f| %>
                     <%= f.error_notification %>
-                    <div class="col-md-12 form-group">
-                            <%= f.input :name,label: false, required: true,input_html: {class: "form-control"},wrapper: false, placeholder: "Name"%>
-                     </div>
-                      <div class="col-md-12 form-group">
-                            <%= f.input :email,label: false, required: true,input_html: {class: "form-control"},wrapper: false, placeholder: "Email"%>
-                     </div>
-                     <div class="col-md-12 form-group" id="option">
-                            <%= f.select(:user_type, ['Admin','User'], {}, { :class => 'form-control option',:type => "hidden" }) %>
-                                            
-                                      
-                     </div>
-                     
-                     
-                    <div class="col-md-12 form-group">
-                            <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),input_html: {class: "form-control"},wrapper: false, placeholder: "Password",label: false%>
-                     </div>
-                     <div class="col-md-12 form-group">
-                            <%= f.input :password_confirmation, required: true,input_html: {class: "form-control"},wrapper: false, placeholder: "Confirm Password",label: false%>
-                     </div>
-                     <div class="col-md-12 form-group">
-                            <%= f.input :coupon, required: false,input_html: {class: "form-control"},wrapper: false, placeholder: "Coupon(Optional)",label: false%>
-                     </div>
-                     
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <div class="btn btn-primary btn-file btn-block">
+            
+                <span id="reauth-email" class="reauth-email"></span>
+                <%= f.input :name,label: false, required: true,input_html: {class: "form-control"},wrapper: false, placeholder: "Name"%>
+                <%= f.input :email,label: false, required: true,input_html: {class: "form-control"},wrapper: false, placeholder: "Email"%>
+                <%= f.select(:user_type, ['Admin','User'], {}, { :class => 'form-control option',:type => "hidden" }) %><br>
+                <%= f.input :password, required: true,input_html: {class: "form-control"},wrapper: false, placeholder: "Password",label: false%>
+                <%= f.input :password_confirmation, required: true,input_html: {class: "form-control"},wrapper: false, placeholder: "Confirm Password",label: false%>
+                <%= f.input :coupon, required: false,input_html: {class: "form-control"},wrapper: false, placeholder: "Coupon(Optional)",label: false%>
+                <div class="btn btn-primary btn-file btn-block">
                             <i class="glyphicon glyphicon-folder-open"></i>
                              Upload Your Profile Picture
                              <%= f.input :image, required: true, as: :file,input_html: {class: "file"},wrapper: false,label: false %>
                             
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                       
-                        <div class="col-md-12">
-                            <%= f.button :submit, "Sign Up", class: "btn btn-info btn-block" %>
-                        </div>
-                    </div>
-                 <% end %>
-                </div>
-            </div>
+                <div class="g-recaptcha" data-sitekey="6Leh8BsTAAAAAL-fU0OS5Si8_5LONGWoVP2Bh56E"></div>
+                <button class="btn btn-lg btn-primary btn-block " type="submit">Sign Up</button>
+            <% end %><!-- /form -->
+            <p>Already have account?<a href="<%= new_user_session_path %>" class="forgot-password">
+                Login
+            </a> </p>
+        </div><!-- /card-container -->
+    </div>
+    <div class="col-md-6 mt50">
+        <h3 class="lined-heading"><span>Why choose AHA­Rooms ?</span></h3>
+        <div class="card card-container">
+        <%= image_tag("whychoose.png",id: "profile-img", class: "profile-img-card") %> 
             
-        </div>
-<%= javascript_include_tag 'admin' %>
+            <p id="profile-name" class="profile-name-card"></p>
+            <h3>Guaranteed Features in all AHA­Rooms:</h3><br>
+            <p><i class="fa fa-globe fa-lg"></i>&nbsp;Unlimited Wi­Fi</p>
+            <p><i class="fa fa-globe fa-lg"></i>&nbsp;Comfortable Beds</p>
+            <p><i class="fa fa-globe fa-lg"></i>&nbsp;Clean wash rooms</p>
+            <p><i class="fa fa-globe fa-lg"></i>&nbsp;Complimentary Breakfast</p>
+            <p><i class="fa fa-globe fa-lg"></i>&nbsp;SAT TV</p>
+            <p>And many more....</p>
+            <p>Stay Smart!</p>
+        </div><!-- /card-container -->
+    </div>
+    
+  </div>
+</section>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

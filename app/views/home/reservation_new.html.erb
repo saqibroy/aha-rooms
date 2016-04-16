@@ -19,7 +19,11 @@
     </div>
   </div>
 </section>
-<h5><%= @mes %></h5>
+<div class="alert alert-info alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <%= @mes %></div>
+
+
 <div class="container">
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -97,7 +101,9 @@
     </div> 
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 price">
         <h3>Payments</h3>
+        <% if @reservation.present? %>
        <p>Amount Payable : &euro; <%= @reservation[:total_price] %></p>
+       <% end %>
       </div>
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
          <p>Pay Now: <i class="fa fa-cc-paypal fa-4x payments"></i><i class="fa fa-cc-visa fa-4x payments"></i><i class="fa fa-cc-mastercard fa-4x payments"></i><i class="fa fa-credit-card-alt fa-4x payments"></i></p>

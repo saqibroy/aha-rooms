@@ -842,7 +842,9 @@ header #logo {
 	-o-transition: all linear 0.3s;
 	transition: all linear 0.3s;
 }*/
-
+.checkin-msg{
+	display: none;
+}
 /* Nav Yamm3 Megamenu */
 .yamm .nav, .yamm .collapse, .yamm .dropup, .yamm .dropdown {
 	position: static;

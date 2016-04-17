@@ -175,7 +175,7 @@
          <% end %>
           <div class="mask">
             <div class="main">
-              <h5><%= room.title %>,<%= room.hotel.name %></h5>
+              <h5><%= room.title %>,<%= room.hotel.name if room.hotel %></h5>
               <div class="price">&euro; <%= room.rate %><span>a night</span></div>
             </div>
             <div class="content">

@@ -16,6 +16,7 @@ class HomeController < ApplicationController
     @reservation.total_price= @reservation.total_price * @reservation.no_of_rooms
     respond_to do |format|
       if @reservation.save
+        ReservationMailer.reservation_email(@reservation).deliver
       	@mes= "Room was Successfully reserved"
         format.html {   }
         format.json { render :index, status: :created, location: @reservation }

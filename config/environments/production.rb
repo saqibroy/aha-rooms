@@ -5,16 +5,19 @@ Rails.application.configure do
 
 # SMTP settings for gmail
 config.action_mailer.default_url_options = { :host => 'nameless-woodland-68138.herokuapp.com' }
+ActionMailer::Base.delivery_method = :smtp
+ActionMailer::Base.perform_deliveries = true
+ActionMailer::Base.raise_delivery_errors = true
+ActionMailer::Base.smtp_settings = 
+{
 
-config.action_mailer.delivery_method = :sendmail
-# Defaults to:
-# config.action_mailer.sendmail_settings = {
-#   location: '/usr/sbin/sendmail',
-#   arguments: '-i -t'
-# }
-config.action_mailer.perform_deliveries = true
-config.action_mailer.raise_delivery_errors = true
-config.action_mailer.default_options = {from: 'no-reply@aha-rooms.com'}
+  :address            => 'smtp.gmail.com',
+  :port               => 587,
+  :domain             => 'gmail.com', #you can also use google.com
+  :authentication     => :login,
+  :user_name          => 'saqibsohail007@gmail.com',
+  :password           => 'barbadi123'
+}
 
   config.serve_static_files = true
   config.cache_classes = true

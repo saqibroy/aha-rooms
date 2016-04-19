@@ -18,8 +18,9 @@
             <ul class="dropdown-menu">
             <% if !current_user.present? %>
               <li><a href="<%= new_user_session_path %>"><i class="fa fa-user"></i> &nbsp;LogIn</a></li>
-              <li><a href=" <%= admin_hotels_path %>"><i class="fa fa-user"></i> &nbsp;Carporate Login</a></li>
+              
               <li><a href="<%= new_user_registration_path %>"><i class="fa fa-user"></i> &nbsp;New?&nbsp;SignUp</a></li>
+              <li><a href=" <%= admin_hotels_path %>"><i class="fa fa-user"></i> &nbsp;Corporate Login</a></li>
               <% else %>
               <li><a href="<%= admin_path %>"><i class="fa fa-user"></i> &nbsp;My Panel</a></li>
               <li><%= link_to destroy_user_session_path, method: :delete do %>

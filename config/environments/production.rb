@@ -15,7 +15,7 @@ ActionMailer::Base.smtp_settings =
   :address            => 'smtp.aha-rooms.com',
   :port               => 587,
   :domain             => 'aha-rooms.com', #you can also use google.com
-  :authentication     => :plain,
+  :authentication     => :login,
   :user_name          => 'bookings@aha-rooms.com',
   :password           => 'Consultant25'
 }

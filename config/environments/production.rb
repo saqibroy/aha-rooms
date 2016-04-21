@@ -12,9 +12,9 @@ ActionMailer::Base.raise_delivery_errors = true
 ActionMailer::Base.smtp_settings = 
 {
 
-  :address            => 'smtp.aha-rooms.com',
+  :address            => 'smtp.gmail.com',
   :port               => 587,
-  :domain             => 'aha-rooms.com', #you can also use google.com
+  :domain             => 'gmail.com', #you can also use google.com
   :authentication     => :login,
   :user_name          => 'bookings@aha-rooms.com',
   :password           => 'Consultant25'

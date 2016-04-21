@@ -2,7 +2,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
-  
+
 
 # SMTP settings for gmail
 config.action_mailer.default_url_options = { :host => 'nameless-woodland-68138.herokuapp.com' }
@@ -12,12 +12,12 @@ ActionMailer::Base.raise_delivery_errors = true
 ActionMailer::Base.smtp_settings = 
 {
 
-  :address            => 'smtp.gmail.com',
+  :address            => 'smtp.aha-rooms.com',
   :port               => 587,
-  :domain             => 'gmail.com', #you can also use google.com
+  :domain             => 'aha-rooms.com', #you can also use google.com
   :authentication     => :login,
-  :user_name          => 'saqibsohail007@gmail.com',
-  :password           => 'barbadi123'
+  :user_name          => 'bookings@aha-rooms.com',
+  :password           => 'Consultant25'
 }
 
   config.serve_static_files = true

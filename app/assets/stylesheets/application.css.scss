@@ -32,18 +32,26 @@
 
 @import "availability-calendar.css";
 
-::-webkit-input-placeholder {
-    color:    red;
-    
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    black !important;
 }
-:-moz-placeholder {
-    color:    red;
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    black !important;
+   opacity:  1 !important;
 }
-::-moz-placeholder {
-    color:    red;
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    black !important;
+   opacity:  1 !important;
 }
-:-ms-input-placeholder {
-    color:    red;
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    black !important;
 }
 
+select {
+      color: black !important; // color of the selected option
+
+      option {
+        color: black !important; // color of all the other options
+      }
+ }
 

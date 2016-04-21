@@ -30,6 +30,8 @@ $('.translation-links a').click(function() {
   return false;
 });
 
+
+
 // $(".btn-search").click(function(){
 // 	if($("checkin").val().length === 0){
 // 		$("checkin-msg").show();

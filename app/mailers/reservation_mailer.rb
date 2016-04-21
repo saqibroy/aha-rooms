@@ -4,7 +4,7 @@ class ReservationMailer < ApplicationMailer
     @user = reservation.user
     @recipients = [@user.email]
     @recipients << reservation.room.hotel.user.email if reservation.room.hotel.user
-    @recipients << "octasolutionx@gmail.com" 
+    @recipients << "admin@aha-rooms.com" 
     @reservation= reservation
 
     mail(to: @recipients, subject: 'Booking Detail')

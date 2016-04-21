@@ -28,6 +28,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem "paperclip", "~> 4.3"
 gem "cocoon"
 gem "simple_calendar", "~> 2.0"
+gem "recaptcha", require: "recaptcha/rails"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -39,14 +39,16 @@
                 <%= f.select(:user_type, ['Admin','User'], {}, { :class => 'form-control option',:type => "hidden" }) %><br>
                 <%= f.input :password, required: true,input_html: {class: "form-control"},wrapper: false, placeholder: "Password",label: false%>
                 <%= f.input :password_confirmation, required: true,input_html: {class: "form-control"},wrapper: false, placeholder: "Confirm Password",label: false%>
-                
+                <div class="form-group">
+            <%= recaptcha_tags %>
+          </div>
                 <div class="btn btn-primary btn-file btn-block">
                             <i class="glyphicon glyphicon-folder-open"></i>
                              Upload Your Profile Picture
                              <%= f.input :image, required: true, as: :file,input_html: {class: "file"},wrapper: false,label: false %>
                             
                             </div>
-                <div class="g-recaptcha" data-sitekey="6Leh8BsTAAAAAL-fU0OS5Si8_5LONGWoVP2Bh56E"></div>
+                
                 <button class="btn btn-lg btn-primary btn-block " type="submit">Sign Up</button>
             <% end %><!-- /form -->
             <p>Already have account?<a href="<%= new_user_session_path %>" class="forgot-password">

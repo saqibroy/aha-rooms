@@ -29,6 +29,9 @@
         <div class="card card-container">
             <%= image_tag("user.png",id: "profile-name", class: "profile-img-card") %> 
             <p id="profile-name" class="profile-name-card"></p>
+             <% flash.each do |name,msg|%>
+                <%= content_tag :div, msg, class: "alert alert-danger flash-popup", role: "alert" %>
+                <% end %>
             <%= simple_form_for(resource, as: resource_name,html: {class: 'form-signin' }, url: session_path(resource_name)) do |f| %>
                     <%= f.error_notification %>
             <form class="form-signin">

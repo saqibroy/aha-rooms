@@ -1,10 +1,17 @@
 class RegistrationsController < Devise::RegistrationsController
-	 prepend_before_action :check_captcha, only: [:create] # Change this to be any actions you want to protect.
-	
+	 
+	 after_action :sign_notice, only: [:create]
 	def create
-    super do |resource|
-      verify_recaptcha(model: resource, message: 'reCAPTCHA verification response is incorrect, please try again.')
-    end
+    if verify_recaptcha
+        super
+      else
+        build_resource
+        clean_up_passwords(resource)
+        flash[:alert] = "There was an error with the recaptcha code below. Please re-enter the code and click submit."
+        #render_with_scope :new    #dld one 
+        render :new
+      end
+    
   end
 
 
@@ -17,13 +24,10 @@ class RegistrationsController < Devise::RegistrationsController
 	def account_update_params
 		params.require(:user).permit(:name,:email,:image,:password,:password_confirmation, :current_password,:coupon)
 	end
-	def check_captcha
-      if verify_recaptcha
-        true
-      else
-        self.resource = resource_class.new sign_up_params
-        respond_with_navigational(resource) { render :new }
-      end 
+	
+
+    def sign_notice
+    	flash[:notice]= "Successfully Signed Up."
     end
 
 
@@ -33,6 +37,10 @@ class RegistrationsController < Devise::RegistrationsController
 
   def sign_up(resource_name, resource)
     true
+  end
+
+  def after_sign_up_path_for(resource)
+    new_user_session_path # Or :prefix_to_your_route
   end
 
 end

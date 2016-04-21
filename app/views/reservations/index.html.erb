@@ -96,9 +96,7 @@
                                                 <td><%= reservation.room.hotel.name %></td>
                                                 <td><%= reservation.room.try(:room_no) %></td>
                                                 <td> 
-                            <%= link_to admin_reservation_cancel_path(id: reservation.id),data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-rounded btn-sm" do %>
-                            <span class="fa fa-times"></span>
-                            <% end %>
+                            <%= link_to "Cancel Booking", admin_reservation_cancel_path(id: reservation.id),data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-rounded btn-sm" %>
                             <%= link_to "Add Testimonial",admin_testimonial_new_path(id: reservation.room.id), class: "btn btn-primary" %>
                             
                             </td>

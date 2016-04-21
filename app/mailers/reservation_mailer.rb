@@ -7,6 +7,6 @@ class ReservationMailer < ApplicationMailer
     @recipients << "octasolutionx@gmail.com" 
     @reservation= reservation
 
-    mail(to: @recipients, subject: 'Reservation Detail')
+    mail(to: @recipients, subject: 'Booking Detail')
     end
 end

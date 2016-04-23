@@ -1,5 +1,5 @@
 class ReservationMailer < ApplicationMailer
-	 default from: "octasolutionx@gmail.com"
+	 default from: "bookings@aha-rooms.com"
 	 def reservation_email(reservation)
     @user = reservation.user
     @recipients = [@user.email]

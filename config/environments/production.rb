@@ -8,7 +8,7 @@ Rails.application.configure do
 config.action_mailer.default_url_options = { :host => 'nameless-woodland-68138.herokuapp.com' }
 ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {
-:address => 'smtpout.ecureserver.net',
+:address => 'ecureserver.net',
 :domain  => 'www.aha-rooms.com',
 :port      => 465,
 :user_name => 'bookings@aha-rooms.com',

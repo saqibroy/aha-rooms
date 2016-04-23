@@ -7,18 +7,15 @@ Rails.application.configure do
 # SMTP settings for gmail
 config.action_mailer.default_url_options = { :host => 'nameless-woodland-68138.herokuapp.com' }
 ActionMailer::Base.delivery_method = :smtp
-ActionMailer::Base.perform_deliveries = true
-ActionMailer::Base.raise_delivery_errors = true
-ActionMailer::Base.smtp_settings = 
-{
-
-  :address            => 'smtp.aha-rooms.com',
-  :port               => 587,
-  :domain             => 'aha-rooms.com', #you can also use google.com
-  :authentication     => :login,
-  :user_name          => 'bookings@aha-rooms.com',
-  :password           => 'Consultant25'
+ActionMailer::Base.smtp_settings = {
+:address => 'smtpout.secureserver.net',
+:domain  => 'www.aha-rooms.com',
+:port      => 80,
+:user_name => 'bookings@aha-rooms.com',
+:password => 'Consultant25',
+:authentication => :plain
 }
+
 
   config.serve_static_files = true
   config.cache_classes = true

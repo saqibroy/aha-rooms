@@ -12,11 +12,8 @@ ActionMailer::Base.smtp_settings = {
 :domain  => 'www.aha-rooms.com',
 :port      => 465,
 :user_name => 'bookings@aha-rooms.com',
-:password => 'consultant25',
-:authentication => :login,
-:ssl                  => true,
-  :tls                  => true,
-  :enable_starttls_auto => true 
+:password => 'Consultant25',
+:authentication => :plain
 }
 
 

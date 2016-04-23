@@ -40,7 +40,7 @@ class ReservationsController < ApplicationController
   # POST /reservations.json
   def create
     @rp= reservation_params
-    if Room.all.where("id NOT IN (SELECT room_id FROM reservations WHERE ? < check_out_date AND ? > check_in_date)",@rp[:check_in_date].to_date.beginning_of_day,@rp[:check_out_date].to_date.beginning_of_day).exists?(params[:id])
+    if Room.all.where("id NOT IN (SELECT room_id FROM reservations WHERE ? < check_out_date AND ? > check_in_date)",@rp[:check_in_date],@rp[:check_out_date]).exists?(params[:id])
     @reservation = @room.reservations.build(reservation_params)
     @reservation.total_price= @reservation.room.rate_after_disc.to_i * (@reservation.check_out_date.strftime("%d").to_i - @reservation.check_in_date.strftime("%d").to_i)
     @reservation.total_price= @reservation.total_price * @reservation.no_of_rooms

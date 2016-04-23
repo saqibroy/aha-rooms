@@ -6,9 +6,9 @@ Rails.application.initialize!
 
 ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {
-:address => 'smtpout.secureserver.net',
+:address => 'smtpout.asia.secureserver.net',
 :domain  => 'www.aha-rooms.com',
-:port      => 465,
+:port      => 25,
 :user_name => 'bookings@aha-rooms.com',
 :password => 'Consultant25',
 :authentication => :plain

@@ -8,8 +8,9 @@ ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {
 :address => 'smtpout.secureserver.net',
 :domain  => 'www.aha-rooms.com',
-:port      => 80,
+:port      => 25,
 :user_name => 'bookings@aha-rooms.com',
 :password => 'Consultant25',
 :authentication => :plain
 }
+

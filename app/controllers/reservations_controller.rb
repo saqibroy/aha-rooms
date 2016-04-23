@@ -54,6 +54,8 @@ class ReservationsController < ApplicationController
         format.json { render json: @reservation.errors, status: :unprocessable_entity }
       end
     end
+  else
+    
   end
   end
   

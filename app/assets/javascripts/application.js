@@ -32,6 +32,15 @@ $('.translation-links a').click(function() {
 
 
 
+$(document).ready(function(){
+$("address").each(function(){
+var embed ="<iframe width='425' height='350' frameborder='0' scrolling='no' marginheight='0' marginwidth='0' src='https://maps.google.com/maps?&amp;q="+ encodeURIComponent( $(this).text() ) +"&amp;output=embed'></iframe>";
+$(this).html(embed);
+});
+});
+
+
+
 // $(".btn-search").click(function(){
 // 	if($("checkin").val().length === 0){
 // 		$("checkin-msg").show();

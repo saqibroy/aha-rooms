@@ -7,7 +7,7 @@ class RoomsController < ApplicationController
   # GET /rooms.json
   def index
     
-    @rooms= Room.all.where("id NOT IN (SELECT room_id FROM reservations WHERE ? < check_out_date AND ? > check_in_date)",params[:checkin].to_date.beginning_of_day,params[:checkout].to_date.beginning_of_day)
+    @rooms= Room.all.where("id NOT IN (SELECT room_id FROM reservations WHERE ? < check_out_date AND ? > check_in_date) AND hotel_id IN (SELECT id from hotels WHERE ? LIKE city)",params[:checkin].to_date.beginning_of_day,params[:checkout].to_date.beginning_of_day,params[:destination].to_s)
   end
 
   # GET /rooms/1
@@ -86,6 +86,6 @@ class RoomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def room_params
-      params.require(:room).permit(:room_no,:title, :rate,:rate_after_disc, :discount, :description,:short_desc, :total_beds, :total_people, :meal,features_attributes:[:id, :name, :_destroy],room_images_attributes: [:id, :image, :_destroy])
+      params.require(:room).permit(:room_no,:title, :rate,:rate_after_disc, :discount, :description,:short_desc,:house_rules, :bus_train, :total_beds, :total_people, :meal,features_attributes:[:id, :name, :_destroy],room_images_attributes: [:id, :image, :_destroy])
     end
 end

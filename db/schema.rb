@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160413070108) do
+ActiveRecord::Schema.define(version: 20160427075151) do
 
   create_table "features", force: :cascade do |t|
     t.string   "name"
@@ -81,6 +81,8 @@ ActiveRecord::Schema.define(version: 20160413070108) do
     t.float    "rate_after_disc"
     t.string   "title"
     t.string   "short_desc"
+    t.text     "house_rules"
+    t.text     "bus_train"
   end
 
   create_table "testimonials", force: :cascade do |t|

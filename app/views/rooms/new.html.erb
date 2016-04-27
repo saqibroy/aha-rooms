@@ -151,6 +151,23 @@
                                            
                                         </div>
                                     </div>
+                                    <br><br><br>
+                                     <div class="form-group col-md-offset-2">
+                                        <label class="col-md-2 col-xs-12 control-label">HOUSE RULES</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <%= f.input :house_rules,label: false, required: true,input_html: {class: "form-control"},wrapper: false%>
+                                           
+                                        </div>
+                                    </div>
+                                    <br><br><br>
+                                     <div class="form-group col-md-offset-2">
+                                        <label class="col-md-2 col-xs-12 control-label">BUS TRAIN INFO</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <%= f.input :bus_train,label: false, required: true,input_html: {class: "form-control"},wrapper: false%>
+                                           
+                                        </div>
+                                    </div>
+                                    <br><br>
                                     
                                     <input type="hidden" name="id" value="<%= @hotel.id%>">
                                     

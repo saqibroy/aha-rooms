@@ -7,7 +7,7 @@ class RoomsController < ApplicationController
   # GET /rooms.json
   def index
     
-    @rooms= Room.all.where("id NOT IN (SELECT room_id FROM reservations WHERE ? < check_out_date AND ? > check_in_date) AND hotel_id IN (SELECT id from hotels WHERE ? LIKE city)",params[:checkin].to_date.beginning_of_day,params[:checkout].to_date.beginning_of_day,params[:destination].to_s)
+    @rooms= Room.all.where("id NOT IN (SELECT room_id FROM reservations WHERE ? < check_out_date AND ? > check_in_date) AND hotel_id IN (SELECT id from hotels WHERE ? LIKE '%city%')",params[:checkin].to_date.beginning_of_day,params[:checkout].to_date.beginning_of_day,params[:destination].to_s)
   end
 
   # GET /rooms/1

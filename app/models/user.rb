@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_attached_file :image, styles: { thumb: "200x200>", thumbb: "100x100>" }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
-  has_many :hotels
-  has_many :reservations
-  has_many :testimonials
+  has_many :hotels, dependent: :destroy 
+  has_many :reservations, dependent: :destroy 
+  has_many :testimonials, dependent: :destroy 
 end

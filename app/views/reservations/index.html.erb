@@ -93,11 +93,19 @@
                                                 <td><%= reservation.check_in_date %></td>
                                                 <td><%= reservation.check_out_date %></td>
                                                 <td><%= reservation.total_price %></td>
-                                                <td><%= reservation.room.hotel.name %></td>
+                                                <td>
+
+                                                <%= reservation.room.hotel.try(:name)  %>
+                                                </td>
                                                 <td><%= reservation.room.try(:room_no) %></td>
                                                 <td> 
+                            <% if current_user.user_type == "User" %>
                             <%= link_to "Cancel Booking", admin_reservation_cancel_path(id: reservation.id),data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-rounded btn-sm" %>
+                            
                             <%= link_to "Add Testimonial",admin_testimonial_new_path(id: reservation.room.id), class: "btn btn-primary" %>
+                            <% else %>
+                            <%= link_to "Cancel Booking", reservation,method: :delete,data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-rounded btn-sm" %>
+                            <% end %>
                             
                             </td>
                             

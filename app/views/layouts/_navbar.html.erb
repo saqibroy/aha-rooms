@@ -82,7 +82,7 @@
                     <% end %>
                     <% end %>
                     <% if current_user.present? %>
-                    <% if current_user.user_type == "User" %>
+                    <% if current_user.user_type != "Admin" %>
                     <li>
                         <%= link_to reservations_path do %>
                      <span class="fa fa-user"></span>
@@ -91,6 +91,7 @@
                     </li> 
                     <% end %>
                     <% end %>
+                    
                     
                 </ul>
                 <!-- END X-NAVIGATION -->

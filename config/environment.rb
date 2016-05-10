@@ -4,13 +4,14 @@ require File.expand_path('../application', __FILE__)
 # Initialize the Rails application.
 Rails.application.initialize!
 
-ActionMailer::Base.delivery_method = :smtp
-ActionMailer::Base.smtp_settings = {
-:address => 'smtpout.secureserver.net',
-:domain  => 'www.aha-rooms.com',
-:port      => 25,
-:user_name => 'bookings@aha-rooms.com',
-:password => 'Consultant25',
-:authentication => :plain
+  config.action_mailer.delivery_method = :smtp
+# SMTP settings for gmail
+config.action_mailer.smtp_settings = {
+ :address              => "smtp.gmail.com",
+ :port                 => 587,
+ :user_name            => 'aharoomservice@gmail.com',
+ :password             => 'booked1!',
+ :authentication       => :login,
+:enable_starttls_auto => true
 }
 

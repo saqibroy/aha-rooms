@@ -13,8 +13,8 @@ config.action_mailer.smtp_settings = {
  :port                 => 587,
  :user_name            => 'ahabookingservice@gmail.com',
  :password             => 'booked1!',
- :authentication       => :login,
-:enable_starttls_auto => true
+ :authentication => :plain,
+      :enable_starttls_auto => true
 }
 
 
